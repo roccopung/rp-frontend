@@ -1,0 +1,11 @@
+@import "normalize.css";
+/* @import '@/assets/css/fonts'; */
+@import "@/assets/css/reset";
+@import "@/assets/css/root";
+/* @import '@/assets/css/directives'; */
+@import "@/assets/css/typography";
+@import "@/assets/css/media";
+@import "@/assets/css/main";
+
+/* external vendors */
+/* @import 'swiper/css/bundle'; */
