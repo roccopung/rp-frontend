@@ -1,6 +1,3 @@
-import variables from "./assets/css/variables.json"
-
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
     head: {
@@ -23,15 +20,12 @@ export default defineNuxtConfig({
   ],
   css: ["@/assets/css/index.css"],
   postcss: {
-    // entry: { styles: "./assets/css/media.css" },
     plugins: {
       "postcss-each": {},
       "postcss-for": {},
       "postcss-simple-vars": {
         silent: true,
-        variables: function () {
-          return require("./postcss.variables")
-        },
+        variables: () => require("./postcss.variables"),
       },
       "postcss-extend-rule": {},
       "@csstools/postcss-global-data": {
