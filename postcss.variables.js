@@ -1,4 +1,4 @@
-import json from './assets/css/variables.json'
+import json from './assets/css/tokens.json'
 
 const variables = {};
 

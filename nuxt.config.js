@@ -22,7 +22,6 @@ export default defineNuxtConfig({
   postcss: {
     plugins: {
       "postcss-each": {},
-      "postcss-for": {},
       "postcss-simple-vars": {
         silent: true,
         variables: () => require("./postcss.variables"),
