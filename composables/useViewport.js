@@ -38,7 +38,7 @@ export const useViewport = createSharedComposable(() => {
 	const supportSvh = useSupported(
 		() => process.client && CSS && CSS.supports("height", "1dvh")
 	)
-	const { width, height } = useWindowSize()
+	const { width, height } = useWindowSize({ includeScrollbar: false })
 
 	const vh = ref()
 	const vw = computed(() => (process.client ? `${width.value / 100}px` : "1vw"))
