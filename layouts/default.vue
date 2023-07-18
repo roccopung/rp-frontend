@@ -11,9 +11,9 @@ const { vw, vh, vhResized, viewportStyle } = useViewport()
 				{{ vh }}
 				{{ vhResized }}
 			</div>
-      <div>
-        {{ viewportStyle }}
-      </div>
+			<div>
+				{{ viewportStyle }}
+			</div>
 		</ClientOnly>
 		<slot />
 		<UiFooter />
