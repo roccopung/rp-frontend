@@ -42,7 +42,7 @@ export const useViewport = createSharedComposable(() => {
 
 	const vh = ref()
 	const vw = computed(() => (process.client ? `${width.value / 100}px` : "1vw"))
-	const vhResized = computed(() =>
+	const dvh = computed(() =>
 		supportDvh.value
 			? "1dvh"
 			: isSmartphone() && !isInstagram()
@@ -59,8 +59,7 @@ export const useViewport = createSharedComposable(() => {
 		useEventListener("resize", useDebounceFn(setClassicVh, 500))
 
 	const viewportStyle = computed(
-		() =>
-			`--vw: ${vw.value}; --vh: ${vh.value}; --vhResized: ${vhResized.value}`
+		() => `--vw: ${vw.value}; --vh: ${vh.value}; --dvh: ${dvh.value}`
 	)
-	return { vw, vh, vhResized, viewportStyle }
+	return { vw, vh, dvh, viewportStyle }
 })

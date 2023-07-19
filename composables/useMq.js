@@ -18,7 +18,7 @@ export const useMq = createSharedComposable(() => {
 
 		return mq
 	} else {
-		console.warn("no breakpoints for mq. It will return an empty object")
+		console.warn("WARN: useMq has no breakpoints. It will return an empty object")
 		return {}
 	}
 })

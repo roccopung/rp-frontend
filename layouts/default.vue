@@ -1,5 +1,6 @@
 <script setup>
-const { vw, vh, vhResized, viewportStyle } = useViewport()
+const { vw, vh, dvh, viewportStyle } = useViewport()
+const mq = useMq()
 </script>
 
 <template>
@@ -9,7 +10,8 @@ const { vw, vh, vhResized, viewportStyle } = useViewport()
 			<div>
 				{{ vw }}
 				{{ vh }}
-				{{ vhResized }}
+				{{ dvh }}
+				{{ mq }}
 			</div>
 			<div>
 				{{ viewportStyle }}
