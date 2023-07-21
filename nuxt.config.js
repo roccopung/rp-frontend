@@ -1,4 +1,4 @@
-import tokens from "./tokens.json"
+import tokens from "./assets/css/tokens.json"
 
 export default defineNuxtConfig({
 	app: {

@@ -1,4 +1,4 @@
-import tokens from "~/tokens.json"
+import tokens from "~/assets/css/tokens.json"
 
 export const useMq = createSharedComposable(() => {
 	const breakpoints = tokens.breakpoint

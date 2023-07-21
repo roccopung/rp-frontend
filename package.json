@@ -8,6 +8,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "postcss-get-tokens": "https://github.com/plcdnl/postcss-get-tokens.git",
     "@pinia/nuxt": "^0.4.11",
     "@vueuse/nuxt": "^10.2.1",
     "normalize.css": "^8.0.1",
