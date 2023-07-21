@@ -4,7 +4,7 @@ const mq = useMq()
 </script>
 
 <template>
-	<main :style="viewportStyle">
+	<main :style="viewportStyle" class="typo--m">
 		<UiHeader />
 		<ClientOnly>
 			<div>
@@ -17,7 +17,7 @@ const mq = useMq()
 				{{ viewportStyle }}
 			</div>
 		</ClientOnly>
-		<div v-for="i in 30">
+		<div style="font-size: var(--space-m)">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae porro
 			veritatis culpa dolor eius quibusdam nam eveniet temporibus repudiandae.
 			Maiores architecto mollitia cum expedita voluptatem vitae corrupti neque

@@ -1,4 +1,4 @@
-import tokens from "~/assets/css/tokens.json"
+import tokens from "~/tokens.json"
 
 export const useMq = createSharedComposable(() => {
 	const breakpoints = tokens.breakpoint
@@ -18,7 +18,9 @@ export const useMq = createSharedComposable(() => {
 
 		return mq
 	} else {
-		console.warn("WARN: useMq has no breakpoints. It will return an empty object")
+		console.warn(
+			"WARN: useMq has no breakpoints. It will return an empty object"
+		)
 		return {}
 	}
 })

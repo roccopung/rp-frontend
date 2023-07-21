@@ -8,21 +8,14 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@csstools/postcss-global-data": "^2.0.0",
     "@pinia/nuxt": "^0.4.11",
     "@vueuse/nuxt": "^10.2.1",
     "normalize.css": "^8.0.1",
-    "nuxt": "3.6.3",
+    "nuxt": "3.6.5",
     "pinia": "^2.1.4",
-    "postcss": "^8.4.26",
-    "postcss-each": "^1.1.0",
-    "postcss-extend-rule": "^4.0.0",
+    "postcss": "^8.4.27",
     "postcss-nested": "^6.0.1",
     "postcss-preset-env": "^9.0.0",
-    "postcss-simple-vars": "^7.0.1",
     "vite-svg-loader": "^4.0.0"
-  },
-  "overrides": {
-    "vue": "latest"
   }
 }

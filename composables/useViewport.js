@@ -36,7 +36,7 @@ export const useViewport = createSharedComposable(() => {
 		() => process.client && CSS && CSS.supports("height", "1dvh")
 	)
 	const supportSvh = useSupported(
-		() => process.client && CSS && CSS.supports("height", "1dvh")
+		() => process.client && CSS && CSS.supports("height", "1svh")
 	)
 	const { width, height } = useWindowSize({ includeScrollbar: false })
 
@@ -55,8 +55,10 @@ export const useViewport = createSharedComposable(() => {
 	}
 
 	setClassicVh()
-	if (!supportSvh.value)
+	if (!supportSvh.value) {
 		useEventListener("resize", useDebounceFn(setClassicVh, 500))
+		useEventListener("orientationchange", useDebounceFn(setClassicVh, 500))
+	}
 
 	const viewportStyle = computed(
 		() => `--vw: ${vw.value}; --vh: ${vh.value}; --dvh: ${dvh.value}`

@@ -2,7 +2,7 @@
 
 </script>
 <template>
-  <div class="homepage">
+  <div class="homepage ue">
     nuxt boilerplate
     <div class="homepage--ue">ueue</div>
   </div>
@@ -14,7 +14,7 @@
   @media (--m) {
     background: teal;
   }
-  &--ue{
+  &.ue{
     background: yellow;
   }
 }

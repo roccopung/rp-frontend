@@ -1,9 +1,18 @@
-module.exports = ({ tokens }) => ({
-	postcssPlugin: "postcss-parse-tokens",
-	prepare() {
-		let importedMedia
-
+export default ({ tokens }) => {
+	if (!tokens) {
+		console.log("WARN: Tokens missing! postcss-get-tokens will not works")
 		return {
+			postcssPlugin: "postcss-get-tokens",
+			prepare: () => ({
+				AtRule: {
+					"get-tokens": (atRule) => atRule.replaceWith([]),
+				},
+			}),
+		}
+	}
+	return {
+		postcssPlugin: "postcss-get-tokens",
+		prepare: () => ({
 			Once: (root, { AtRule }) => {
 				const nodes = []
 
@@ -31,16 +40,10 @@ module.exports = ({ tokens }) => ({
 				})
 
 				root.append(...nodes)
-				importedMedia = new Set(nodes)
 			},
-			OnceExit: () => {
-				importedMedia.forEach((n) => {
-					n.remove()
-				})
-				importedMedia = new Set()
-			},
+			OnceExit: () => {},
 			AtRule: {
-				"gg-tokens": (atRule, { Declaration, AtRule }) => {
+				"get-tokens": (atRule, { Declaration, AtRule }) => {
 					const nodes = []
 					const mediaRules = []
 
@@ -93,8 +96,8 @@ module.exports = ({ tokens }) => ({
 					atRule.replaceWith(nodes)
 				},
 			},
-		}
-	},
-})
+		}),
+	}
+}
 
-module.exports.postcss = true
+export const postcss = true
