@@ -8,13 +8,13 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "postcss-get-tokens": "https://github.com/plcdnl/postcss-get-tokens.git",
     "@pinia/nuxt": "^0.4.11",
     "@vueuse/nuxt": "^10.2.1",
-    "normalize.css": "^8.0.1",
+    "modern-normalize": "^2.0.0",
     "nuxt": "3.6.5",
     "pinia": "^2.1.4",
     "postcss": "^8.4.27",
+    "postcss-get-tokens": "https://github.com/plcdnl/postcss-get-tokens.git",
     "postcss-nested": "^6.0.1",
     "postcss-preset-env": "^9.1.0",
     "vite-svg-loader": "^4.0.0"
