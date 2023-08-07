@@ -3,20 +3,22 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "dev-https": "nuxt dev --https --ssl-cert certs/localhost.pem --ssl-key certs/localhost-key.pem",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "preview-https": "NITRO_SSL_CERT=`cat certs/localhost.pem` NITRO_SSL_KEY=`cat certs/localhost-key.pem` node .output/server/index.mjs",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
     "@pinia/nuxt": "^0.4.11",
-    "@vueuse/nuxt": "^10.2.1",
+    "@vueuse/nuxt": "^10.3.0",
     "modern-normalize": "^2.0.0",
     "nuxt": "3.6.5",
-    "pinia": "^2.1.4",
+    "pinia": "^2.1.6",
     "postcss": "^8.4.27",
     "postcss-get-tokens": "https://github.com/plcdnl/postcss-get-tokens.git",
     "postcss-nested": "^6.0.1",
-    "postcss-preset-env": "^9.1.0",
+    "postcss-preset-env": "^9.1.1",
     "vite-svg-loader": "^4.0.0"
   }
 }
