@@ -13,10 +13,9 @@
     "@pinia/nuxt": "^0.4.11",
     "@vueuse/nuxt": "^10.3.0",
     "modern-normalize": "^2.0.0",
-    "nuxt": "3.6.5",
+    "nuxt3": "^3.7.0-28190318.305d6de0",
     "pinia": "^2.1.6",
     "postcss": "^8.4.27",
-    "postcss-get-tokens": "https://github.com/plcdnl/postcss-get-tokens.git",
     "postcss-nested": "^6.0.1",
     "postcss-preset-env": "^9.1.1",
     "vite-svg-loader": "^4.0.0"

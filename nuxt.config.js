@@ -1,5 +1,3 @@
-import tokens from "./assets/css/tokens.json"
-
 export default defineNuxtConfig({
 	app: {
 		head: {
@@ -25,7 +23,9 @@ export default defineNuxtConfig({
 	},
 	postcss: {
 		plugins: {
-			"./postcss-get-tokens": { tokens },
+			"./postcss-get-tokens": {
+				path: "./assets/css/tokens.json",
+			},
 			"postcss-nested": {},
 			"postcss-preset-env": {
 				stage: 0,
