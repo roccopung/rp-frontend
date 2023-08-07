@@ -11,11 +11,18 @@ export default defineNuxtConfig({
 			],
 		},
 	},
+	runtimeConfig: {
+		public: {
+			baseUrl: process.env.NUXT_PUBLIC_BASE_URL,
+			// apiUrl: ""
+		},
+		basicAuth: process.env.BASIC_AUTH,
+	},
+	css: ["@/assets/css/index.css"],
 	modules: ["@vueuse/nuxt", "@pinia/nuxt"],
 	pinia: {
 		autoImports: ["defineStore", "definePiniaStore", "storeToRefs"],
 	},
-	css: ["@/assets/css/index.css"],
 	postcss: {
 		plugins: {
 			"./postcss-get-tokens": { tokens },
@@ -28,5 +35,5 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	watch: ["./assets/css/tokens.json"],
+	watch: ["assets/css/tokens.json"],
 })
