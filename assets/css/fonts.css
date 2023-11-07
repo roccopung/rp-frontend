@@ -1,6 +1,14 @@
 @font-face {
-  font-family: "FTAktual";
-  /* src: url("@/assets/fonts/FTAktual-Light.woff") format("woff"); */
+  font-family: "Compagnon";
+  src: url("@/fonts/Compagnon-Bold.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: "Venus Plomb";
+  src: url("@/fonts/venusplomb-webfont.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
