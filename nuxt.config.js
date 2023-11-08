@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  ssr: true,
   app: {
     head: {
       meta: [
@@ -19,11 +20,6 @@ export default defineNuxtConfig({
   },
   css: ["@/assets/css/index.css"],
   modules: ["@vueuse/nuxt", "@pinia/nuxt", "@nuxtjs/sanity"],
-  i18n: {
-    vueI18n: './i18n.config.ts',
-    locales: ['en', 'fr'],  // used in URL path prefix
-    defaultLocale: 'en'   // default locale of your project for Nuxt pages and routings
-  },
   sanity: {
     projectId: process.env.NUXT_ENV_SANITY_PROJECT_ID,
     dataset: process.env.NUXT_ENV_SANITY_DATASET,
