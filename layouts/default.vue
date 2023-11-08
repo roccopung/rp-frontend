@@ -6,7 +6,7 @@ const mq = useMq()
 
 <template>
 	<main :style="viewportStyle" class="typo--m">
-		<slot />
+		<slot></slot>
 	</main>
 </template>
 
