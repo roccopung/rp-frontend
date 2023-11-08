@@ -1,6 +1,7 @@
 <script setup>
 const { vw, vh, dvh, viewportStyle } = useViewport()
 const mq = useMq()
+
 </script>
 
 <template>

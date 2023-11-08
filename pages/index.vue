@@ -1,5 +1,15 @@
-<script setup>
+<script setup >
 
+const sketch = (p5) => {
+  p5.setup = () => {
+    p5.createCanvas(500, 500)
+  }
+  p5.draw = () => {
+    p5.background("#fff000")
+  }
+}
+
+const p5wrapper =ref();
 const projectList = ref(null);
 const container = ref();
 const runtimeConfig = useRuntimeConfig();
@@ -40,6 +50,8 @@ const activeImage = useActiveImage();
 		<BusinessCard />
 	</div>
 	<div class="background-image" :style="{ backgroundImage: `url(${activeImage})` }"></div>
+	<!-- <P5Wrapper ref="p5wrapper" :sketch="sketch" /> -->
+
 </template>
 
 <style scoped>
