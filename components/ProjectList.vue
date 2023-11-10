@@ -12,25 +12,28 @@ const projectQuery = groq`
 const { data: projectData } = useSanityQuery(projectQuery);
 
 watchEffect(() => {
+    const activeImage = useActiveImage();
     if (hoveredProject.value) {
-        const activeImage = useActiveImage();
         activeImage.value = hoveredProject.value.imageUrl;
     }
 });
 
 </script>
 <template>
-    <div class="project-list typo--m">
+    <div class="project-list typo--l">
         <ul v-for="project in projectData">
             <div v-if="project.year">
                 <NuxtLink to="#">
                     <li class="list-item" :key="project._id" @mouseover="hoveredProject = project"
                         @mouseout="hoveredProject = null">
-                        {{ project.title }}
-                    </li>
-                    <div class="project-image">
-                            <img v-if="hoveredProject === project" :src="project.imageUrl" />
+                        <div>{{ project.title }}<span class="project-year typo--s">{{ project.year }}</span></div>
+                        <div class="project-thumbnail">
+                            <img :src="project.imageUrl" />
                         </div>
+                    </li>
+                    <!-- <div class="project-image">
+                            <img v-if="hoveredProject === project" :src="project.imageUrl" />
+                        </div> -->
                 </NuxtLink>
             </div>
         </ul>
@@ -49,11 +52,11 @@ watchEffect(() => {
         align-self: center;
         overflow-y: auto;
         padding: 0;
-        width: fit-content;
-        min-width: 365px;
+        width: 33svw;
+        min-width: 400px;
         border: 1px solid var(--color-black);
-        background-color: var(--color-white-transparent);
-        border-radius: 7px;
+        background-color: var(--color-white);
+        /* border-radius: 7px; */
     }
 
     .project-list::-webkit-scrollbar {
@@ -64,7 +67,14 @@ watchEffect(() => {
 .list-item {
     width: 100%;
     height: auto;
-    padding: 0.2rem 0 0.3rem 0.3rem;
+    padding: 0.2rem 0.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-item:hover {
+    font-style: italic;
 }
 
 .project-list>*:not(:last-child) {
@@ -76,17 +86,26 @@ watchEffect(() => {
 }
 
 .project-year {
-    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    vertical-align: top;
 }
 
 .project-image {
     width: 25svw;
-    height: 50svh;
+    height: auto;
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    right: 10px;
-    top: calc(25svh);
+    left: var(--space-s);
+    top: var(--space-s);
+}
+
+.project-thumbnail {
+    width: 4svw;
+    min-width: 60px;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    height: auto;
 }
 </style>

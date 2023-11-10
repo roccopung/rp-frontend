@@ -5,5 +5,4 @@ const sketch = props.sketch
 <template>
   <P5 :sketch="sketch" />
 </template>
-<style scoped>
-</style>
+<style scoped></style>

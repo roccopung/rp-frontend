@@ -1,31 +1,31 @@
 .typo {
 	&--s {
-		font-family: "Compagnon", "Times New Roman", serif;
+		font-family:  "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
-		font-size: 18px;
+		font-size: 16px;
 		line-height: 125.5%;
 		@media (--m) {
-			font-size: 18px;
+			font-size: 1svw;
 			line-height: 125.5%;
 		}
 	}
 	&--m {
 		font-family: "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
-		font-size: 13px;
+		font-size: 16px;
 		line-height: 125.5%;
-		@media (--xl) {
-			font-size: 0.9svw;
+		@media (--l) {
+			font-size: 1.3svw;
 			line-height: 125.5%;
 		}
 	}
 	&--l {
-		font-family: "Helvetica", "Arial", sans-serif;
+		font-family: "Venus Plomb", "Arial", sans-serif;
 		font-weight: 450;
-		font-size: 32px;
+		font-size: 20px;
 		line-height: 26px;
-		@media (--xl) {
-			font-size: 1.2svw;
+		@media (--l) {
+			font-size: 1.7svw;
 			line-height: 125%;
 		}
 	}

@@ -1,4 +1,3 @@
-
 import { defineNuxtPlugin } from "#app"
 //@ts-ignore
 import p5vue from "p5vue"

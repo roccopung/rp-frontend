@@ -24,6 +24,8 @@
   },
   "dependencies": {
     "@nuxtjs/sanity": "^1.8.1",
-    "@sanity/image-url": "^1.0.2"
+    "@sanity/image-url": "^1.0.2",
+    "core-js": "^3.33.2",
+    "vis-network": "^9.1.9"
   }
 }
