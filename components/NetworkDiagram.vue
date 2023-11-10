@@ -29,7 +29,15 @@ onMounted(() => {
     label: category.title,
     color: {
       background: '#000',
-      border: '#000'
+      border: '#000',
+      hover: {
+        border: '#000',
+        background: "#000"
+      },
+      highlight: {
+        border: '#000',
+        background: "#000"
+      },
     },
     font: { color: "white" },
     value: 30
@@ -40,7 +48,15 @@ onMounted(() => {
     label: project.title,
     color: {
       background: '#f8f8f8',
-      border: '#000'
+      border: '#000',
+      hover: {
+        border: '#000',
+        background: "#FFE5A4",
+      },
+      highlight: {
+        border: '#000',
+        background: "#FFE5A4"
+      },
     },
     value: 10
   }));
@@ -73,10 +89,11 @@ onMounted(() => {
     nodes: {
       shape: "box",
       borderWidth: 1,
+      borderWidthSelected: 1,
       shapeProperties: {
         borderRadius: 0,
       },
-      margin: 10,
+      margin: 5,
       widthConstraint: {
         maximum: 150,
       },
@@ -91,6 +108,26 @@ onMounted(() => {
         max: 150,
       }
     },
+    edges: {
+      dashes: true,
+      selectionWidth: 0.1,
+      selfReferenceSize: 0.1,
+      smooth: {
+        forceDirection: "none",
+      },
+    },
+    interaction: {
+      hover: true,
+      selectConnectedEdges: false,
+      hoverConnectedEdges: false
+    },
+    physics: {
+      barnesHut: {
+        springLength: 200,
+      },
+      stabilization: false,
+      wind: { x: 0, y: 0 },
+    }
   };
 
   const network = new vis.Network(container, data, options);
