@@ -20,31 +20,64 @@ watchEffect(() => {
 
 </script>
 <template>
-    <div class="project-list typo--l">
-        <ul v-for="project in projectData">
-            <div v-if="project.year">
+    <div>
+        <div class="toolbar">
+
+            <!-- <div class="sort"></div>
+            <div class="filter typo--l">Filter</div> -->
+        </div>
+        <div class="project-list typo--l">
+            <ul v-for="project in projectData">
                 <NuxtLink to="#">
                     <li class="list-item" :key="project._id" @mouseover="hoveredProject = project"
                         @mouseout="hoveredProject = null">
                         <div>{{ project.title }}<span class="project-year typo--s">{{ project.year }}</span></div>
-                        <div class="project-thumbnail">
-                            <img :src="project.imageUrl" />
-                        </div>
+                        <!-- <div class="project-thumbnail">
+                                <img :src="project.imageUrl" />
+                            </div> -->
                     </li>
                     <!-- <div class="project-image">
-                            <img v-if="hoveredProject === project" :src="project.imageUrl" />
-                        </div> -->
+                                <img v-if="hoveredProject === project" :src="project.imageUrl" />
+                            </div> -->
                 </NuxtLink>
-            </div>
-        </ul>
+            </ul>
+        </div>
     </div>
 </template>
 
 <style scoped>
+.toolbar {
+    height: 40px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    background-color: chartreuse;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+
+}
+
+/* .sort {
+    width: 40px;
+    height: 40px;
+    background-color: yellow;
+}
+
+.filter {
+    width: auto;
+    height: 40px;
+    background-color: chartreuse;
+    display: flex;
+    justify-content:flex-start;
+    align-items:center;
+    padding: 0.4rem;
+} */
+
 @media screen and (min-width: 768px) {
     .project-list {
         min-height: auto;
-        max-height: 400px;
+        max-height: 250px;
         height: auto;
         display: flex;
         flex-direction: column;
@@ -52,7 +85,7 @@ watchEffect(() => {
         align-self: center;
         overflow-y: auto;
         padding: 0;
-        width: 33svw;
+        width: 25svw;
         min-width: 400px;
         border: 1px solid var(--color-black);
         background-color: var(--color-white);
@@ -67,6 +100,7 @@ watchEffect(() => {
 .list-item {
     width: 100%;
     height: auto;
+    min-height: 40px;
     padding: 0.2rem 0.4rem;
     display: flex;
     justify-content: space-between;

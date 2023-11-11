@@ -1,4 +1,8 @@
 <script setup>
+import { DataSet } from "vis-data/peer";
+import { Network } from "vis-network/peer";
+import "vis-network/styles/vis-network.css";
+
 const networkDiagram = ref();
 
 const tagsQuery = groq`
@@ -80,8 +84,8 @@ onMounted(() => {
   const container = networkDiagram.value;
 
   const data = {
-    nodes: new vis.DataSet(nodes),
-    edges: new vis.DataSet(edges),
+    nodes: new DataSet(nodes),
+    edges: new DataSet(edges),
   };
   console.log(data)
 
@@ -112,9 +116,7 @@ onMounted(() => {
       dashes: true,
       selectionWidth: 0.1,
       selfReferenceSize: 0.1,
-      smooth: {
-        forceDirection: "none",
-      },
+      smooth: false,
     },
     interaction: {
       hover: true,
@@ -122,15 +124,17 @@ onMounted(() => {
       hoverConnectedEdges: false
     },
     physics: {
-      barnesHut: {
-        springLength: 200,
+      forceAtlas2Based: {
+        gravitationalConstant: -180,
+        avoidOverlap: 0.6,
+        springConstant: 0.6,
       },
       stabilization: false,
       wind: { x: 0, y: 0 },
     }
   };
 
-  const network = new vis.Network(container, data, options);
+  const network = new Network(container, data, options);
 
 });
 

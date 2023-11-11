@@ -12,16 +12,12 @@ watchEffect(() => {
     } else {
         activeNetwork.value = true;
     }
-
-    console.log("is list è" + isList.value);
-    console.log("activeList è" + activeList.value);
-    console.log("activeNetwork è" + activeNetwork.value);
 })
 
 </script>
 <template>
     <div class="toggleView">
-        <div class="toggleValue" :class="{ white:isList }">{{ isList ? "List View" : "Network View" }}</div>
+        <div class="toggleValue">{{ isList ? "List View" : "Network View" }}</div>
         <button class="toggle" @click="toggleList()">
             <input type="checkbox" class="check">
             <b class="b switch"></b>
@@ -30,9 +26,8 @@ watchEffect(() => {
     </div>
 </template>
 <style scoped>
-.white {
-    color:var(--color-white);;
-}
+
+
 .toggleValue {
     text-align: right;
 }
@@ -57,6 +52,7 @@ watchEffect(() => {
     background-color: var(--color-black);
     overflow: hidden;
     box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, .05);
+    border: 1px solid #000;
 }
 
 .check {
@@ -72,7 +68,7 @@ watchEffect(() => {
 }
 
 .check:checked~.track {
-    box-shadow: inset 0 0 0 20px var(--color-primary-accent);
+    box-shadow: inset 0 0 0 20px chartreuse;
 }
 
 .check:checked~.switch {

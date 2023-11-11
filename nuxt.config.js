@@ -7,13 +7,7 @@ export default defineNuxtConfig({
           name: "viewport",
           content: "width=device-width, initial-scale=1, viewport-fit=cover",
         },
-      ],
-      script: [
-        {
-          src: "https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js",
-          body: true,
-        },
-      ],
+      ]
     },
   },
   components: [{ path: "~/components", pathPrefix: false }],
