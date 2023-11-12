@@ -164,7 +164,7 @@ watchEffect(() => {
   position: absolute;
   pointer-events: none;
   width: 100%;
-  height: 60vh;
+  height: 60svh;
   top: 0;
   left: 0;
   display: flex;
