@@ -15,16 +15,24 @@
 <style scoped>
 .business-card {
     background-color: var(--color-white);
-    height: auto;
-    width: 25svw;
-    position: absolute;
-    border: 1px solid var(--color-black);
-    bottom: 10px;
-    right: 10px;
+    height: 10svh;
+    width: 100%;
+    position: relative;
+    border-top: 1px solid var(--color-black);
     padding: 6px;
     display: grid;
     column-gap: 10px;
     grid-template-columns: 1fr 1fr 1fr;
+
+    @media(--m) {
+        position: absolute;
+        border: var(--border-black);
+        min-width: 400px;
+        height: auto;
+        width: 25svw;
+        bottom: 10px;
+        right: 10px;
+    }
 }
 
 .left {
@@ -34,15 +42,18 @@
     justify-content: space-between;
 }
 
-.contacts > * {
+.contacts>* {
     display: block;
 }
 
 .image {
     height: 100%;
     background-image: url('/images/pigeon.png');
-    aspect-ratio: 1/1;
+    aspect-ratio: 21/9;
     background-size: cover;
+    background-position: center;
+    @media(--m){
+        aspect-ratio: 1/1;
+    }
 }
-
 </style>

@@ -1,4 +1,7 @@
 <script setup>
+const { width } = useWindowSize()
+const windowWidth = width;
+
 const isList = ref(false);
 const toggleList = useToggle(isList);
 
@@ -6,10 +9,9 @@ watchEffect(() => {
     const activeList = useActiveList();
     const activeNetwork = useActiveNetwork();
     activeList.value = isList.value;
-
-    if(isList.value == true) {
+    if(windowWidth.value < 700 || isList.value == true ) {
         activeNetwork.value = false;
-    } else {
+    } else if (windowWidth.value >= 700 && isList.value == false){
         activeNetwork.value = true;
     }
 })
@@ -18,7 +20,7 @@ watchEffect(() => {
 <template>
     <div class="toggleView">
         <div class="toggleValue">{{ isList ? "List View" : "Network View" }}</div>
-        <button class="toggle" @click="toggleList()">
+        <button  class="toggle" @click="toggleList()">
             <input type="checkbox" class="check">
             <b class="b switch"></b>
             <b class="b track"></b>
@@ -38,6 +40,7 @@ watchEffect(() => {
     display: flex;
     align-items: center;
     gap: 10px;
+    z-index: 10;
 }
 
 .b {
@@ -51,7 +54,7 @@ watchEffect(() => {
     border-radius: 0;
     background-color: var(--color-black);
     overflow: hidden;
-    border: 1px solid #000;
+    border: var(--border-black);
 }
 
 .check {

@@ -1,11 +1,21 @@
 .typo {
+	&--xs {
+		font-family:  "Venus Plomb", "Arial", sans-serif;
+		font-weight: 300;
+		font-size: 11px;
+		line-height: 125.5%;
+		@media (--l) {
+			font-size: 1svw;
+			line-height: 125.5%;
+		}
+	}
 	&--s {
 		font-family:  "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
-		font-size: 16px;
+		font-size: 13px;
 		line-height: 125.5%;
-		@media (--m) {
-			font-size: 1svw;
+		@media (--l) {
+			font-size: 1.1svw;
 			line-height: 125.5%;
 		}
 	}

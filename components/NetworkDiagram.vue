@@ -1,6 +1,6 @@
 <script setup>
 import { DataSet } from "vis-data/peer";
-import { Network } from "vis-network/peer";
+import { Network, networkOptions } from "vis-network/peer";
 import "vis-network/styles/vis-network.css";
 
 const networkDiagram = ref();
@@ -136,6 +136,7 @@ onMounted(() => {
   };
 
   const network = new Network(container, data, options);
+  network.fit({ minZoomLevel: 1 });
 
 });
 
