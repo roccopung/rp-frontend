@@ -19,7 +19,8 @@ useHead({
 	<div ref="container" class="container">
 		<!-- <div v-show="windowWidth < 700" class="background-image" :style="{ backgroundImage: `url(${activeImage})` }"></div> -->
 		<ToggleView v-show="windowWidth >= 700" />
-		<NetworkDiagram v-show="activeNetwork" />
+		<NetworkDiagram v-if="activeNetwork" />
+		<div v-else> Nothing </div>
 		<ProjectList v-show="activeList || windowWidth < 700" />
 		<BusinessCard />
 	</div>
