@@ -18,7 +18,7 @@ useHead({
 <template>
 	<!-- <div class="background-image" :style="{ backgroundImage: `url(${activeImage})` }"></div> -->
 	<div ref="container" class="container">
-		<div class="dimensions">{{ width }} x {{ height }}</div>
+		<div class="dimensions typo--m">{{ width }} x {{ height }}</div>
 		<ProjectList v-show="activeList" />
 		<!-- <PixelatedCanvas v-show="activeList" /> -->
 		<NetworkDiagram v-show="activeNetwork" />
@@ -30,10 +30,11 @@ useHead({
 <style scoped>
 .dimensions {
 	position: fixed;
-	top: 4px;
-	left: var(--space-s);
+	top: 0;
+	left: 0;
+	margin-top: var(--space-s);
+	margin-left: var(--space-s);
 	color: var(--color-black);
-	font-size: 16px;
 }
 
 .container {

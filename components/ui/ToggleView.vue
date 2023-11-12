@@ -51,7 +51,6 @@ watchEffect(() => {
     border-radius: 0;
     background-color: var(--color-black);
     overflow: hidden;
-    box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, .05);
     border: 1px solid #000;
 }
 
@@ -92,6 +91,7 @@ watchEffect(() => {
     transition-property: left, right;
     transition-delay: 0s, .05s;
     box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    outline: 1px solid #000;
 }
 
 .track {
@@ -101,7 +101,6 @@ watchEffect(() => {
     right: 0;
     bottom: 0;
     transition: .35s cubic-bezier(0.785, 0.135, 0.150, 0.860);
-    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .05);
     border-radius: 0;
 }
 </style>

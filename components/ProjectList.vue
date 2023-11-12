@@ -4,8 +4,8 @@ const coverImageRef = ref();
 const imageSrc = ref('');
 
 const projectQuery = groq`
-  *[_type == "projectType"] {
-    title, year, cover, "imageUrl": cover.asset->url
+  *[_type == "projectType"]|order(orderRank) {
+    title, year, abstract, cover, "imageUrl": cover.asset->url
   }`;
 
 
@@ -21,11 +21,11 @@ watchEffect(() => {
 </script>
 <template>
     <div>
-        <div class="toolbar">
+        <!-- <div class="toolbar">
 
-            <!-- <div class="sort"></div>
-            <div class="filter typo--l">Filter</div> -->
-        </div>
+            <div class="sort"></div>
+            <div class="filter typo--l">Filter</div> 
+        </div> -->
         <div class="project-list typo--l">
             <ul v-for="project in projectData">
                 <NuxtLink to="#">
@@ -40,23 +40,34 @@ watchEffect(() => {
                                 <img v-if="hoveredProject === project" :src="project.imageUrl" />
                             </div> -->
                 </NuxtLink>
+                <div class="details typo--m" v-if="hoveredProject === project">{{ project.abstract }}</div>
             </ul>
         </div>
     </div>
 </template>
 
 <style scoped>
-.toolbar {
+
+.details {
+    position: absolute;
+    top: 0;
+    left:0;
+    margin-top: var(--space-s);
+    margin-left: var(--space-s);
+    padding: 0.1rem;
+    background-color: chartreuse;
+    border: 1px solid #000;
+}
+/* .toolbar {
     height: 40px;
     width: 100%;
     position: relative;
     display: flex;
-    background-color: chartreuse;
     border-left: 1px solid #000;
     border-right: 1px solid #000;
     border-top: 1px solid #000;
 
-}
+} */
 
 /* .sort {
     width: 40px;

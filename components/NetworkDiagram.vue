@@ -18,7 +18,7 @@ const projectQuery = groq`
     category[] -> {
       _id,
       title
-    }
+    } 
   }`;
 
 const { data: categories } = useSanityQuery(tagsQuery);
@@ -125,9 +125,10 @@ onMounted(() => {
     },
     physics: {
       forceAtlas2Based: {
-        gravitationalConstant: -180,
-        avoidOverlap: 0.6,
+        gravitationalConstant: -400,
         springConstant: 0.6,
+        springLength: 80,
+        damping: 0.35,
       },
       stabilization: false,
       wind: { x: 0, y: 0 },
