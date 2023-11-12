@@ -50,24 +50,6 @@ watchEffect(() => {
 
 <style scoped>
 
-
-
-
-.category {
-    padding: 0.2rem 0.4rem;
-    background-color: chartreuse;
-    width: fit-content;
-    border: var(--border-black);
-    border-top: 0;
-}
-
-.category:first-of-type {
-    border-left: 0;
-    @media(--m) {
-        border-left: var(--border-black);
-    }
-}
-
 .project-list {
     min-height: auto;
     max-height: 30svh;
@@ -182,7 +164,7 @@ watchEffect(() => {
 
 .abstract {
     padding: 0.2rem 0.4rem;
-    background-color: var(--color-white);
+    background-color: var(--color-primary-accent);
     border-bottom: var(--border-black);
 
     @media(--m) {
@@ -207,6 +189,25 @@ watchEffect(() => {
 .item-link {
     width: 100%;
     height: 100%;
+}
+
+.category {
+    padding: 0.2rem 0.4rem;
+    background-color: chartreuse;
+    width: fit-content;
+    border: var(--border-black-dashed);
+    border-top: 0;
+    @media(--m) {
+        border: var(--border-black);
+        border-top: 0;
+    }
+}
+
+.category:first-of-type {
+    border-left: 0;
+    @media(--m) {
+        border-left: var(--border-black);
+    }
 }
 
 </style>

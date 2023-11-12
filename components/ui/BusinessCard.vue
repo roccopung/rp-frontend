@@ -18,7 +18,7 @@
     height: 10svh;
     width: 100%;
     position: relative;
-    border-top: 1px solid var(--color-black);
+    border-top: 1px dashed var(--color-black);
     padding: 6px;
     display: grid;
     column-gap: 10px;
