@@ -31,7 +31,7 @@ watchEffect(() => {
                 <div>{{ project.title }}<span class="project-year typo--xs">{{ project.year }}</span></div>
             </NuxtLink>
             <!-- v-if="hoveredProject === project" -->
-            <div class="details typo--m" v-if="hoveredProject === project" >
+            <div class="details typo--m" v-show="hoveredProject === project" >
                 <div class="abstract">{{ project.abstract }}</div>
                 <ul>
                     <li class="category" v-for="category in project.category" :key="category._id">
