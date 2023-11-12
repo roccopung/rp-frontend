@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="image"></div>
-        <div>Visual Developer <br>& Whatsoever</div>
+        <div class="right">Visual Developer <br>& Whatsoever</div>
     </div>
 </template>
 <style scoped>
@@ -40,6 +40,10 @@
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
+}
+
+.right {
+    justify-self: flex-end;
 }
 
 .contacts>* {
