@@ -45,4 +45,7 @@ export default defineNuxtConfig({
     },
   },
   watch: ["assets/css/tokens.json"],
+  generate: {
+    fallback: true
+  },
 });

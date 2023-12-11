@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-    <div class="business-card typo--s">
+    <div class="business-card typo--xs">
         <div class="left">
             <div class="name">Rocco Punghellini</div>
             <div class="contacts">
@@ -17,21 +17,21 @@
     background-color: var(--color-white);
     height: 10svh;
     width: 100%;
-    position: relative;
+    position: fixed;
+    bottom: 0;
     border-top: 1px dashed var(--color-black);
     padding: 6px;
     display: grid;
-    column-gap: 10px;
+    column-gap: var(--space-xs);;
     grid-template-columns: 1fr 1fr 1fr;
 
     @media(--m) {
-        position: absolute;
         border: var(--border-black);
         min-width: 400px;
         height: auto;
         width: 25svw;
-        bottom: 10px;
-        right: 10px;
+        right: var(--space-s);
+        bottom: var(--space-s);;
     }
 }
 

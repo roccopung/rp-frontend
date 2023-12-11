@@ -1,213 +1,102 @@
 <script setup>
-const { width } = useWindowSize();
-const hoveredProject = ref(null);
-const coverImageRef = ref();
-const imageSrc = ref('');
 
 const projectQuery = groq`
   *[_type == "projectType"]|order(orderRank) {
-    title, year, abstract, cover, category[] -> {
+    title, year, cover, roles[] -> {
+      _id,
+      title
+    }, category[] -> {
       _id,
       title
     }, 
-    "imageUrl": cover.asset->url
+    "imageUrl": cover.asset->url,
+    "slug": slug.current
   }`;
 
 
 const { data: projectData } = useSanityQuery(projectQuery);
 
-watchEffect(() => {
-    const activeImage = useActiveImage();
-    if (hoveredProject.value) {
-        activeImage.value = hoveredProject.value.imageUrl;
-    }
-});
 
 </script>
 <template>
-    <ul class="project-list typo--l">
-        <li class="list-item" v-for="project in projectData" @mouseover="hoveredProject = project" @mouseout="hoveredProject = null">
-            <NuxtLink class="item-link"  to="#">
-                <div>{{ project.title }}<span class="project-year typo--xs">{{ project.year }}</span></div>
-            </NuxtLink>
-            <!-- v-if="hoveredProject === project" -->
-            <div class="details typo--m" v-show="hoveredProject === project" >
-                <div class="abstract">{{ project.abstract }}</div>
-                <ul>
-                    <li class="category" v-for="category in project.category" :key="category._id">
-                        {{ category.title }}
-                    </li>
-                </ul>
-                <div class="image-container">
-                    <div class="project-image">
-                        <img :src="project.imageUrl" />
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
+  <div class="project-grid typo--m">
+    <div v-for="project in projectData">
+      <NuxtLink class="item-link grid-item" :to="'/project/' + project.slug">
+        <div>
+          <div class="project-title">{{ project.title }}<span class="project-year .text-top typo--xs">{{ project.year }}</span></div>
+          <div class="category typo--xs" v-for="category in project.category" :key="category._id">
+            {{ category.title }}
+          </div>
+        </div>
+        <div class="project-image-container">
+            <img :src="project.imageUrl" />
+        </div>
+      </NuxtLink>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-
-.project-list {
-    min-height: auto;
-    max-height: 30svh;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-self: flex-end;
-    overflow-y: auto;
-    width: 100%;
-    background-color: var(--color-white);
-    border-top: 1px solid var(--color-black);
-
-    @media (--m) {
-        max-height: 250px;
-        border: 1px solid var(--color-black);
-        align-self: center;
-        min-width: 400px;
-        width: 25svw;
-    }
-}
-
-.project-list::-webkit-scrollbar {
-    display: none;
-}
-
-
-.list-item {
-    width: 100%;
-    height: 100%;
-    min-height: 40px;
-    padding: 0.2rem 0.4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-
-.project-list>*:not(:last-child) {
-    border-bottom: var(--border-black);
-}
-
-.project-year {
-    padding-left: 0.5rem;
-    vertical-align: top;
-}
-
-.image-container {
-    width: 100%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    height:100%;
-    @media(--m){
-        display: block;
-        width: inherit;
-    }
-}
-
-.project-image {
-    max-width: 90svw;
-    height: 40svh;
-    aspect-ratio: 1/1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-
-    @media(--m) {
-        max-width: auto;
-        display: block;
-        aspect-ratio: auto;
-        width: 25svw;
-        height: auto;
-        margin-top: var(--space-s);
-
-    }
-}
-
-.project-image img {
-    position: relative;
-    height: auto;
-    max-height: 100%;
-    max-width: 100%;
-    border: var(--border-black);
-
-    @media(--m) {
-        max-height: 25svw;
-    }
-}
-
-.details {
-  position: absolute;
-  pointer-events: none;
-  width: 100%;
-  height: 60svh;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-
-  @media (--m) {
-    width: auto;
-    height: auto;
-    margin-top: var(--space-s);
-    margin-left: var(--space-s);
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, auto-fill);
+  grid-gap: 0px;
+  grid-row-gap: var(--space-m);
+  grid-column-gap: var(--space-xs);
+  @media(--m) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media(--l) {
+    grid-template-columns: repeat(auto-fill, 24svw);
   }
 }
 
-.abstract {
-    padding: 0.2rem 0.4rem;
-    background-color: var(--color-primary-accent);
-    border-bottom: var(--border-black);
-
-    @media(--m) {
-        border: var(--border-black);
-    }
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  cursor:pointer; 
 }
 
-.details>ul {
-    display: flex;
-    gap: var(--space-s);
+.grid-item:hover,
+.grid-item:active {
+  background-color: var(--color-grey);
 }
 
-.list-item:hover .details {
-  opacity: 1;
-  cursor: pointer;
+.project-title {
+  padding: 0.1rem 0.2rem;
 }
 
-.list-item:hover {
-  background-color: var(--color-primary-accent);
+.project-image-container {
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.item-link {
-    width: 100%;
-    height: 100%;
+.project-image-container img {
+  height: 120px;
+  position: relative;
+  @media(--xl) {
+    height: 8svw;
+  }
 }
 
 .category {
-    padding: 0.2rem 0.4rem;
-    background-color: chartreuse;
-    width: fit-content;
-    border: var(--border-black-dashed);
-    border-top: 0;
-    @media(--m) {
-        border: var(--border-black);
-        border-top: 0;
-    }
+  padding: 0.1rem 0.2rem;
+  background-color: var(--color-acid-green);
+  width: fit-content;
+  border-top: 0;
 }
 
-.category:first-of-type {
-    border-left: 0;
-    @media(--m) {
-        border-left: var(--border-black);
-    }
+.project-year {
+  padding-right: 0.5rem;
+  margin-left: 5px;
 }
 
+.text-top {
+  vertical-align: top;
+}
 </style>

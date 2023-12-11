@@ -18,9 +18,10 @@ useHead({
 <template>
 	<div ref="container" class="container">
 		<!-- <div v-show="windowWidth < 700" class="background-image" :style="{ backgroundImage: `url(${activeImage})` }"></div> -->
-		<ToggleView v-show="windowWidth >= 700" />
+		<!-- <ToggleView v-show="windowWidth >= 700" />
 		<NetworkDiagram v-if="activeNetwork" />
-		<ProjectList v-show="activeList || windowWidth < 700" />
+		<ProjectList v-show="activeList || windowWidth < 700" /> -->
+		<ProjectList />
 		<BusinessCard />
 	</div>
 </template>
@@ -30,22 +31,6 @@ useHead({
 	min-height: 100svh;
 	min-width: 100svw;
 	background-color: var(--color-primary-light);
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	@media(--m) {
-		justify-content: center;
-		align-items: center;
-	}
+	padding: var(--space-s);
 }
-/* .background-image {
-
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	transition: 0.3s ease-in-out;
-	height: 100%;
-	width: 100%;
-	z-index: -1;
-} */
 </style>

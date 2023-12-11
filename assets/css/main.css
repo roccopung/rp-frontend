@@ -1,28 +1,37 @@
 html {
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-	overflow-x: hidden;
-	height: 100%;
-	width: 100%;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 img,
 svg {
-	display: block;
+  display: block;
 }
 
 svg {
-	overflow: visible;
+  overflow: visible;
+}
+
+/* custom exceptions */
+
+.block-wrapper > div > p {
+  padding-bottom: var(--space-s);
+}
+.block-wrapper > div > p > a {
+  background-color: var(--color-primary-accent);
 }

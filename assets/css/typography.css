@@ -2,19 +2,23 @@
 	&--xs {
 		font-family:  "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
-		font-size: 11px;
+		font-size: 14px;
 		line-height: 125.5%;
-		@media (--l) {
-			font-size: 1svw;
+		@media (--m) {
+			font-size: 12px;
+			line-height: 125.5%;
+		}
+		@media (--xl) {
+			font-size: 0.8svw;
 			line-height: 125.5%;
 		}
 	}
 	&--s {
 		font-family:  "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
-		font-size: 13px;
+		font-size: 16px;
 		line-height: 125.5%;
-		@media (--l) {
+		@media (--xl) {
 			font-size: 1.1svw;
 			line-height: 125.5%;
 		}
@@ -22,19 +26,23 @@
 	&--m {
 		font-family: "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
-		font-size: 16px;
+		font-size: 20px;
 		line-height: 125.5%;
-		@media (--l) {
-			font-size: 1.3svw;
+		@media (--m) {
+			font-size: 18px;
+			line-height: 125.5%;
+		}
+		@media (--xl) {
+			font-size: 1.2svw;
 			line-height: 125.5%;
 		}
 	}
 	&--l {
 		font-family: "Venus Plomb", "Arial", sans-serif;
 		font-weight: 450;
-		font-size: 20px;
+		font-size: 22px;
 		line-height: 26px;
-		@media (--l) {
+		@media (--xl) {
 			font-size: 1.7svw;
 			line-height: 125%;
 		}
