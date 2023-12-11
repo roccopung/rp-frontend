@@ -23,7 +23,7 @@ const { data: projectData } = useSanityQuery(projectQuery);
     <div v-for="project in projectData">
       <NuxtLink class="item-link grid-item" :to="'/project/' + project.slug">
         <div>
-          <div class="project-title">{{ project.title }}<span class="project-year .text-top typo--xs">{{ project.year }}</span></div>
+          <div class="project-title">{{ project.title }}<span class="project-year text-top typo--xs">{{ project.year }}</span></div>
           <div class="category typo--xs" v-for="category in project.category" :key="category._id">
             {{ category.title }}
           </div>

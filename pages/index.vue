@@ -16,12 +16,14 @@ useHead({
 
 </script>
 <template>
-	<div ref="container" class="container">
-		<!-- <div v-show="windowWidth < 700" class="background-image" :style="{ backgroundImage: `url(${activeImage})` }"></div> -->
-		<!-- <ToggleView v-show="windowWidth >= 700" />
-		<NetworkDiagram v-if="activeNetwork" />
-		<ProjectList v-show="activeList || windowWidth < 700" /> -->
-		<ProjectList />
+	<div>
+		<div ref="container" class="container">
+			<!-- <div v-show="windowWidth < 700" class="background-image" :style="{ backgroundImage: `url(${activeImage})` }"></div> -->
+			<!-- <ToggleView v-show="windowWidth >= 700" />
+			<NetworkDiagram v-if="activeNetwork" />
+			<ProjectList v-show="activeList || windowWidth < 700" /> -->
+			<ProjectList />
+		</div>
 		<BusinessCard />
 	</div>
 </template>
