@@ -1,10 +1,10 @@
 <script setup >
 const { width } = useWindowSize();
 const windowWidth = width;
-const activeList = useActiveList();
-const activeNetwork = useActiveNetwork();
+// const activeList = useActiveList();
+// const activeNetwork = useActiveNetwork();
 const container = ref();
-const activeImage = useActiveImage();
+// const activeImage = useActiveImage();
 const runtimeConfig = useRuntimeConfig();
 
 useHead({

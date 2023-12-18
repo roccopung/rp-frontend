@@ -1,34 +1,18 @@
 <script setup>
+import project from '~/queries/project';
+
 const { width } = useWindowSize();
 const windowWidth = width;
 
-const { params } = useRoute();
-const projectSlug = params.slug;
+// const { params } = useRoute();
+// const projectSlug = params.slug;
 
-// Define the query to get project details
-const currentQuery = groq`
-    *[_type == "projectType" && slug.current == '${projectSlug}'] {
-      title,
-      year,
-	  client,
-	  url,
-      category[] -> {
-        _id,
-        title
-      },
-	  "imageUrl": cover.asset->url,
-	  roles[] -> {
-        _id,
-        title
-      },
-	  summary,
-	  tech,
-	  description
-    }`;
+const props = defineProps([
+    'projectData'
+]);
 
-
-// Fetch the project data
-const { data: currentData } = useSanityQuery(currentQuery);
+const { data: currentData } = useSanityQuery(project);
+console.log(project);
 
 const formatRoles = (roles) => {
 	if (!roles || roles.length === 0) {
@@ -42,82 +26,190 @@ const formatRoles = (roles) => {
 };
 </script>
 <template>
-    <div v-for="current in currentData" class="content">
-        <div class="block-container">
-            <div class="block-wrapper">
-                <div class="text-top project-spec typo--xs">Summary</div>
-                <div>{{ current.summary }}</div>
+    <div class="container" v-for="current in currentData">
+        <div class="header">
+            <div class="project-title"><span class="project-spec text-top typo--xs">{{ current.year }}</span>{{
+                current.title }}<span class="category typo--xs" v-for="category in current.category" :key="category._id">
+                    {{ category.title }}
+                </span>
             </div>
-            <div class="block-wrapper">
-                <div class="text-top project-spec typo--xs">Stack</div>
-                <div>
-                    <SanityContent :blocks="current.tech" />
-                </div>
-            </div>
-            <div v-if="current.client" v-show="windowWidth < 700" class="block-wrapper">
-                <div>
-                    <div class="text-top project-spec typo--xs">Client</div>
-                    <div>{{ current.client }}</div>
-                </div>
-            </div>
-            <div v-if="current.collaborators" v-show="windowWidth < 700" class="block-wrapper">
-                <div class="project-spec text-top">
-                    <div class="text-top project-spec typo--xs">Made with</div>
-                    <div>{{ current.collaborators }}</div>
-                </div>
-            </div>
-            <div v-show="windowWidth < 700" class="block-wrapper">
-                <div>
-                    <div class="text-top project-spec typo--xs">Roles</div>
+            <div v-show="windowWidth > 700" class="project-details">
+                <div v-if="current.client" class="project-label"><span class="project-spec text-top  typo--xs">Client</span>{{
+                    current.client }}</div>
+                <div class="project-label"><span class="text-top project-spec typo--xs">Roles</span>
                     <div>{{ formatRoles(current.roles) }}</div>
                 </div>
+                <div v-if="current.collaborators" class="text-top project-label"><span class="project-spec typo--xs">Made
+                        with</span>{{ current.collaborators }}</div>
             </div>
         </div>
-        <div class="block-container">
-            <div class="block-wrapper">
-                <div class="text-top project-spec typo--xs">Process</div>
-                <div>
-                    <SanityContent :blocks="current.description" />
+        <main>
+            <div class="hero-container">
+                <div class="hero"><img :src="current.imageUrl" /></div>
+            </div>
+            <NuxtLink v-if="current.url" class="visit-website" :to="current.url" target="_blank"> Visit {{ current.url }} </NuxtLink>
+            <div v-for="current in currentData" class="content">
+                <div class="block-container">
+                    <div class="block-wrapper">
+                        <div class="text-top project-spec typo--xs">Summary</div>
+                        <div>{{ current.summary }}</div>
+                    </div>
+                    <div class="block-wrapper">
+                        <div class="text-top project-spec typo--xs">Stack</div>
+                        <div>
+                            <SanityContent :blocks="current.tech" />
+                        </div>
+                    </div>
+                    <div v-if="current.client" v-show="windowWidth < 700" class="block-wrapper">
+                        <div>
+                            <div class="text-top project-spec typo--xs">Client</div>
+                            <div>{{ current.client }}</div>
+                        </div>
+                    </div>
+                    <div v-if="current.collaborators" v-show="windowWidth < 700" class="block-wrapper">
+                        <div class="project-spec text-top">
+                            <div class="text-top project-spec typo--xs">Made with</div>
+                            <div>{{ current.collaborators }}</div>
+                        </div>
+                    </div>
+                    <div v-show="windowWidth < 700" class="block-wrapper">
+                        <div>
+                            <div class="text-top project-spec typo--xs">Roles</div>
+                            <div>{{ formatRoles(current.roles) }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-container">
+                    <div class="block-wrapper">
+                        <div class="text-top project-spec typo--xs">Process</div>
+                        <div>
+                            <SanityContent :blocks="current.description" />
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
+        <button class="button" type="submit" @click="nextPage()"></button>
     </div>
 </template>
 <style scoped>
-.content {
-	display: block;
-	padding: var(--space-2xs);
-	padding-top: var(--space-m);
-	padding-bottom: var(--space-xl);
+.button {
+    z-index: 100;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
 
-	@media(--m) {
-		display: flex;
-	}
+.container {
+    background-color: var(--color-primary-light);
+    min-height: 100svh;
+    width: 100%;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
+.category {
+    padding: 0.1rem 0.2rem;
+    margin-left: 0.5rem;
+    background-color: var(--color-acid-green);
+    width: fit-content;
+    border-top: 0;
+}
+
+.project-spec {
+    padding-right: 0.5rem;
+}
+
+.text-top {
+    vertical-align: top;
+}
+
+.project-title {
+    padding: var(--space-2xs);
+    background-color: var(--color-white);
+}
+
+.project-details {
+    background-color: var(--color-grey);
+    padding: var(--space-2xs);
+    display: flex;
+    gap: 40px;
+}
+
+.project-label {
+    display: block;
+
+    @media(--m) {
+        display: flex;
+    }
+}
+
+.hero-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero img {
+    max-height: 70svh;
+}
+
+.visit-website {
+    width: 100%;
+    border-top: var(--border-black);
+    border-bottom: var(--border-black);
+    padding: var(--space-2xs);
+    display: flex;
+    justify-content: center;
+
+    &:hover {
+        background-color: var(--color-primary-accent);
+    }
+}
+
+
+.content {
+    display: block;
+    padding: var(--space-2xs);
+    padding-top: var(--space-m);
+    padding-bottom: var(--space-xl);
+
+    @media(--m) {
+        display: flex;
+    }
 }
 
 .block-container {
-	width: 100%;
+    width: 100%;
 
-	@media(--m) {
-		width: 50%;
-	}
+    @media(--m) {
+        width: 50%;
+    }
 }
 
 .block-container:first-child {
-	@media(--m) {
-		padding-right: var(--space-m);
-	}
+    @media(--m) {
+        padding-right: var(--space-m);
+    }
 }
 
 .block-wrapper {
-	display: block;
-	padding-bottom: var(--space-m);
+    display: block;
+    padding-bottom: var(--space-m);
+
     @media(--m) {
-		display: grid;
-		grid-template-columns: 1fr 5fr;
-	}
-	@media(--l) {
-		display: grid;
-		grid-template-columns: 1fr 8fr;
-	}
-}</style>
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+    }
+
+    @media(--l) {
+        display: grid;
+        grid-template-columns: 1fr 8fr;
+    }
+}
+</style>

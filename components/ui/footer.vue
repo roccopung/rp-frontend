@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+
+
+
+</script>
 
 <template>
     <footer class="footer typo--s">
@@ -9,16 +13,15 @@
 
 <style scoped>
 .footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     background-color: var(--color-white);
     display: flex;
     gap: 40px;
 }
 
-.footer > * {
-	padding: var(--space-xs);
+.footer>* {
+    padding: var(--space-xs);
 }
-
 </style>
