@@ -3,13 +3,19 @@ const props = defineProps({
   error: Object,
 })
 
-const handleError = () => clearError({ redirect: '/' })
+const route = useRoute();
+
+const goBack = () => {
+  const router = useRouter();
+  router.push('/');
+}
 
 </script>
 
 <template>
   <NuxtLayout>
     <h2>{{ error.statusCode }}</h2>
-    <button @click="handleError">Go back to site</button>
+    <div>page not found: {{ route.fullPath }}</div>
+    <button @click="goBack">Go back to site</button>
   </NuxtLayout>
 </template>
