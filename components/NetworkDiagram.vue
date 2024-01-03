@@ -180,7 +180,9 @@ watchEffect(() => {
 #network {
   display: block;
   width: 100svw;
+  height: 100svh;
   background-color: var(--color-primary-light);
   overflow: hidden;
+  position: absolute;
 }
 </style>
