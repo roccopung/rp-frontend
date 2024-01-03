@@ -15,22 +15,23 @@ const projectQuery = groq`
   *[_type == "projectType"] {
     _id,
     title,
-    category[] -> {
+    'slug' : slug.current, 
+    roles[] -> {
       _id,
       title
-    } 
+    },
   }`;
 
-const { data: categories } = useSanityQuery(tagsQuery);
-const { data: projects } = useSanityQuery(projectQuery);
+const { data: categories } = await useSanityQuery(tagsQuery);
+const { data: projects } = await useSanityQuery(projectQuery);
 
 
 
 onMounted(() => {
 
-  const categoryNodes = categories.value?.map((category) => ({
-    id: category._id,
-    label: category.title,
+  const rolesNodes = categories.value?.map((roles) => ({
+    id: roles._id,
+    label: roles.title,
     color: {
       background: '#000',
       border: '#000',
@@ -45,11 +46,12 @@ onMounted(() => {
     },
     font: { color: "white" },
     value: 30
-  }));
+  })) || [];
 
   const projectNodes = projects.value?.map((project) => ({
     id: project._id,
     label: project.title,
+    url: project.slug,
     color: {
       background: '#f8f8f8',
       border: '#000',
@@ -63,19 +65,21 @@ onMounted(() => {
       },
     },
     value: 10
-  }));
+  })) || [];
 
 
-  const nodes = categoryNodes.concat(projectNodes);
+  const nodes = rolesNodes.concat(projectNodes);
+
+  const nodesDataSet = new DataSet(nodes);
 
   const edges = [];
 
   projects.value?.forEach((project) => {
-    project.category?.forEach((category) => {
-      const matchingCategoryNode = categoryNodes.find((node) => node.id === category._id);
+    project.roles?.forEach((roles) => {
+      const matchingRolesNode = nodesDataSet.get(roles._id);
 
-      if (matchingCategoryNode) {
-        edges.push({ from: matchingCategoryNode.id, to: project._id });
+      if (matchingRolesNode) {
+        edges.push({ from: matchingRolesNode.id, to: project._id });
       }
     });
   });
@@ -115,7 +119,10 @@ onMounted(() => {
     edges: {
       dashes: true,
       selectionWidth: 0.1,
-      selfReferenceSize: 0.1,
+      selfReference: {
+        size: 30,
+        angle: Path2D.PI / 4
+      },
       smooth: false,
     },
     interaction: {
@@ -135,8 +142,17 @@ onMounted(() => {
     }
   };
 
+
   const network = new Network(container, data, options);
   network.fit({ minZoomLevel: 1 });
+  network.on('selectNode', function (params) {
+    if (params.nodes.length === 1) {
+      let node = nodesDataSet.get(params.nodes[0]);
+      if (node && node.url) {
+        window.open(`http://localhost:3000/project/${node.url}`, '_blank');
+      }
+    }
+  });
 
 });
 

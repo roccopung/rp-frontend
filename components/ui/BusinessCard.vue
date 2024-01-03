@@ -1,11 +1,11 @@
 <script setup></script>
 <template>
-    <div class="business-card typo--xs">
+    <div class="business-card typo--s">
         <div class="left">
             <div class="name">Rocco Punghellini</div>
             <div class="contacts">
-                <NuxtLink to="#">e-mail</NuxtLink>
-                <NuxtLink to="#">@Instagram</NuxtLink>
+                <NuxtLink class="link" to="mailto:rocco.punghellini@gmail.com">e-mail</NuxtLink>
+                <NuxtLink class="link" to="https://www.instagram.com/rocco.punghellini/">@Instagram</NuxtLink>
             </div>
         </div>
         <div class="image"></div>
@@ -15,7 +15,6 @@
 <style scoped>
 .business-card {
     background-color: var(--color-white);
-    height: 10svh;
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -59,5 +58,13 @@
     @media(--m){
         aspect-ratio: 1/1;
     }
+}
+
+.link {
+    width: max-content;
+}
+
+.link:hover {
+    background-color: var(--color-grey);
 }
 </style>

@@ -1,44 +1,68 @@
 .typo {
 	&--xs {
-		font-family:  "Venus Plomb", "Arial", sans-serif;
+		font-family:  "Venus Acier", "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
-		font-size: 14px;
-		line-height: 125.5%;
+		font-size: 12px;
+		line-height: 135%;
 		@media (--m) {
 			font-size: 12px;
-			line-height: 125.5%;
+			line-height: 135%;
 		}
 		@media (--xl) {
 			font-size: 0.8svw;
-			line-height: 125.5%;
+			line-height: 135%;
 		}
 	}
 	&--s {
 		font-family:  "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
-		font-size: 16px;
-		line-height: 125.5%;
+		font-size: 14px;
+		line-height: 135%;
 		@media (--xl) {
 			font-size: 1.1svw;
-			line-height: 125.5%;
+			line-height: 135%;
 		}
 	}
 	&--m {
 		font-family: "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
-		font-size: 20px;
-		line-height: 125.5%;
+		font-size: 16px;
+		line-height: 135%;
 		@media (--m) {
-			font-size: 18px;
-			line-height: 125.5%;
+			font-size: 16px;
+			line-height: 135%;
 		}
 		@media (--xl) {
 			font-size: 1.2svw;
-			line-height: 125.5%;
+			line-height: 135%;
+		}
+	}
+	&--m-alt {
+		font-family: "Venus Acier", "Venus Plomb", "Arial", sans-serif;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 135%;
+		@media (--m) {
+			font-size: 16px;
+			line-height: 135%;
+		}
+		@media (--xl) {
+			font-size: 1.2svw;
+			line-height: 135%;
 		}
 	}
 	&--l {
 		font-family: "Venus Plomb", "Arial", sans-serif;
+		font-weight: 450;
+		font-size: 22px;
+		line-height: 135%;
+		@media (--xl) {
+			font-size: 1.7svw;
+			line-height: 125%;
+		}
+	}
+	&--l-alt {
+		font-family: "Venus Acier", "Venus Plomb", "Arial", sans-serif;
 		font-weight: 450;
 		font-size: 22px;
 		line-height: 26px;

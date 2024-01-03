@@ -1,5 +1,4 @@
 export default defineNuxtConfig({
-  ssr: true,
   app: {
     head: {
       meta: [
@@ -19,16 +18,13 @@ export default defineNuxtConfig({
     basicAuth: process.env.BASIC_AUTH,
   },
   css: ["@/assets/css/index.css"],
-  modules: ["@vueuse/nuxt", "@pinia/nuxt", "@nuxtjs/sanity"],
+  modules: ["@vueuse/nuxt", "@nuxtjs/sanity", "@nuxt/image"],
   sanity: {
     projectId: process.env.NUXT_ENV_SANITY_PROJECT_ID,
     dataset: process.env.NUXT_ENV_SANITY_DATASET,
     apiVersion: "2022-03-25",
     perspective: "published",
     useCdn: false,
-  },
-  pinia: {
-    autoImports: ["defineStore", "definePiniaStore", "storeToRefs"],
   },
   postcss: {
     plugins: {

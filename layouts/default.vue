@@ -5,9 +5,11 @@ const mq = useMq()
 </script>
 
 <template>
-	<main :style="viewportStyle" class="typo--m">
+	<div 
+	:style="viewportStyle" 
+	class="typo--m">
 		<slot></slot>
-	</main>
+	</div>
 </template>
 
 <style></style>

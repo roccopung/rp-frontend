@@ -2,7 +2,7 @@
 const { width } = useWindowSize()
 const windowWidth = width;
 
-const isList = ref(false);
+const isList = ref(true);
 const toggleList = useToggle(isList);
 
 watchEffect(() => {

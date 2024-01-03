@@ -1,20 +1,6 @@
 <script setup>
-
-const projectQuery = groq`
-  *[_type == "projectType"]|order(orderRank) {
-    title, year, cover, roles[] -> {
-      _id,
-      title
-    }, category[] -> {
-      _id,
-      title
-    }, 
-    "imageUrl": cover.asset->url,
-    "slug": slug.current
-  }`;
-
-
-const { data: projectData } = useSanityQuery(projectQuery);
+import { fetchProjectType } from '~/composables/projectList';
+const { projectData } = await fetchProjectType();
 
 
 </script>
@@ -23,13 +9,17 @@ const { data: projectData } = useSanityQuery(projectQuery);
     <div v-for="project in projectData">
       <NuxtLink class="item-link grid-item" :to="'/project/' + project.slug">
         <div>
-          <div class="project-title">{{ project.title }}<span class="project-year text-top typo--xs">{{ project.year }}</span></div>
+          <div class="project-title">
+            {{ project.title }}
+            <span class="project-year text-top typo--xs">
+              {{ project.year }}</span>
+          </div>
           <div class="category typo--xs" v-for="category in project.category" :key="category._id">
             {{ category.title }}
           </div>
         </div>
         <div class="project-image-container">
-            <img :src="project.imageUrl" />
+          <NuxtImg format="webp" :src="$urlFor(project.imageUrl).size(400).url()" />
         </div>
       </NuxtLink>
     </div>
@@ -44,9 +34,11 @@ const { data: projectData } = useSanityQuery(projectQuery);
   grid-gap: 0px;
   grid-row-gap: var(--space-m);
   grid-column-gap: var(--space-xs);
+
   @media(--m) {
     grid-template-columns: 1fr 1fr;
   }
+
   @media(--l) {
     grid-template-columns: repeat(auto-fill, 24svw);
   }
@@ -57,7 +49,7 @@ const { data: projectData } = useSanityQuery(projectQuery);
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  cursor:pointer; 
+  cursor: pointer;
 }
 
 .grid-item:hover,
@@ -67,6 +59,7 @@ const { data: projectData } = useSanityQuery(projectQuery);
 
 .project-title {
   padding: 0.1rem 0.2rem;
+  background-color: transparent;
 }
 
 .project-image-container {
@@ -79,6 +72,7 @@ const { data: projectData } = useSanityQuery(projectQuery);
 .project-image-container img {
   height: 120px;
   position: relative;
+
   @media(--xl) {
     height: 8svw;
   }
@@ -93,7 +87,7 @@ const { data: projectData } = useSanityQuery(projectQuery);
 
 .project-year {
   padding-right: 0.5rem;
-  margin-left: 5px;
+  padding-left: var(--space-2xs);
 }
 
 .text-top {

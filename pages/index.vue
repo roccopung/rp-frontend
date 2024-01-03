@@ -1,11 +1,11 @@
 <script setup >
 const { width } = useWindowSize();
 const windowWidth = width;
-// const activeList = useActiveList();
-// const activeNetwork = useActiveNetwork();
+const activeList = useActiveList();
+const activeNetwork = useActiveNetwork();
 const container = ref();
-// const activeImage = useActiveImage();
 const runtimeConfig = useRuntimeConfig();
+
 
 useHead({
 	title: `Cose di Rocco Punghellini`,
@@ -18,11 +18,9 @@ useHead({
 <template>
 	<div>
 		<div ref="container" class="container">
-			<!-- <div v-show="windowWidth < 700" class="background-image" :style="{ backgroundImage: `url(${activeImage})` }"></div> -->
-			<!-- <ToggleView v-show="windowWidth >= 700" />
+			<ToggleView v-if="windowWidth >= 700" />
 			<NetworkDiagram v-if="activeNetwork" />
-			<ProjectList v-show="activeList || windowWidth < 700" /> -->
-			<ProjectList />
+			<ProjectList v-show="activeList || windowWidth < 700" />
 		</div>
 		<BusinessCard />
 	</div>

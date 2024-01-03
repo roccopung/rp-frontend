@@ -11,6 +11,7 @@ export function fetchProjectData(projectSlug) {
       title,
       year,
       client,
+      gallery,
       // ... other fields
       'imageUrl': cover.asset->url,
       roles[] -> {

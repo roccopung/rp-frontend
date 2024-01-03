@@ -14,3 +14,11 @@
   font-style: normal;
   font-stretch: normal;
 }
+
+@font-face {
+  font-family: "Venus Acier";
+  src: url("/fonts/Venus+Acier.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}

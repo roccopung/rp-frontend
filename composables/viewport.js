@@ -61,7 +61,7 @@ export const useViewport = createSharedComposable(() => {
 	}
 
 	const viewportStyle = computed(
-		() => `--vw: ${vw.value}; --vh: ${vh.value}; --dvh: ${dvh.value}`
+		() => `--vw:${vw.value}; --vh:${vh.value}; --dvh:${dvh.value}`
 	)
 	return { vw, vh, dvh, viewportStyle }
 })

@@ -29,9 +29,22 @@ svg {
 
 /* custom exceptions */
 
-.block-wrapper > div > p {
-  padding-bottom: var(--space-s);
+.h2 {
+  text-transform: capitalize;
+  margin-bottom: var(--space-m);
+  width:max-content;
+  @media(--m){
+      margin-bottom: var(--space-l);
+  }
 }
-.block-wrapper > div > p > a {
-  background-color: var(--color-primary-accent);
+
+p {
+  padding-top:0;
+}
+
+p > a {
+  border-bottom: 1px solid #000;
+  &:hover {
+    background-color: var(--color-grey);
+  }
 }
