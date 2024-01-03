@@ -19,11 +19,11 @@ const formatRoles = (roles) => {
 	return result;
 };
 
-if (!props.currentData) {
-	throw createError({
-		statusCode: "404"
-	})
-}
+// if (!props.currentData) {
+// 	throw createError({
+// 		statusCode: "404"
+// 	})
+// }
 
 </script>
 
