@@ -1,6 +1,6 @@
 <script setup>
 import { DataSet } from "vis-data/peer";
-import { Network, networkOptions } from "vis-network/peer";
+import { Network } from "vis-network/peer";
 import "vis-network/styles/vis-network.css";
 
 const networkDiagram = ref();
@@ -180,7 +180,6 @@ watchEffect(() => {
 #network {
   display: block;
   width: 100svw;
-  height: 100svh;
   background-color: var(--color-primary-light);
   overflow: hidden;
 }

@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  ssr: true,
+  // ssr: true,
   alias: {
     '@@': '/<rootDir>',
     assets: '/<rootDir>/assets',
