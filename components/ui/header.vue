@@ -31,7 +31,7 @@ if (!props.currentData) {
     <header class="header">
 			<div class="project-title">
 				<span class="project-spec text-top typo--xs" v-html="props.currentData.year" />
-				<span v-html="props.currentData.title" />
+				<span v-html="props.currentData?.title" />
 				<span class="category typo--xs" v-for="category in props.currentData.category" :key="category._id"
 					v-html="category.title" />
 			</div>
