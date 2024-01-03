@@ -1,4 +1,9 @@
 export default defineNuxtConfig({
+  alias: {
+    '@@': '/<rootDir>',
+    assets: '/<rootDir>/assets',
+    public: '/<rootDir>/public',
+  },
   app: {
     head: {
       meta: [
@@ -42,6 +47,7 @@ export default defineNuxtConfig({
   },
   watch: ["assets/css/tokens.json"],
   generate: {
-    fallback: true
+    fallback: true,
+    crawler: false
   },
 });
