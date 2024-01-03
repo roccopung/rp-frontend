@@ -2,11 +2,14 @@
 const props = defineProps({
   error: Object,
 })
+
+const handleError = () => clearError({ redirect: '/' })
+
 </script>
 
 <template>
   <NuxtLayout>
-    <div v-html="`Error: ${error.statusCode}`" /> 
-    <pre style="font-size: 10px; line-height: 1;" v-html="JSON.stringify(error)"></pre>
+    <h2>{{ error.statusCode }}</h2>
+    <button @click="handleError">Go back to site</button>
   </NuxtLayout>
 </template>
