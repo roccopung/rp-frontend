@@ -26,9 +26,9 @@ const goToPrevPage = () => {
 <template>
 	<footer class="footer typo--s">
 		<div v-if="props.nextData || props.prevData" class="swipe-projects typo--s">
-			<button v-show="props.nextData" class="button-next" type="submit" @click="goToNextPage">{{ props.nextData.title
+			<button v-show="props.nextData" class="button-next" type="submit" @click="goToNextPage">{{ props.nextData?.title
 			}}</button>
-			<button v-show="props.prevData" class="button-prev" type="submit" @click="goToPrevPage">{{ props.prevData.title
+			<button v-show="props.prevData" class="button-prev" type="submit" @click="goToPrevPage">{{ props.prevData?.title
 			}}</button>
 		</div>
 		<div class="navigation">
