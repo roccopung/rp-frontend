@@ -29,7 +29,7 @@ if (!props.currentData) {
 </script>
 
 <template>
-    <div class="page-content">
+    <div v-if="props.currentData.summary || props.currentData.description" class="page-content">
         <div class="base-content">
             <div class="block-container">
                 <div v-if="props.currentData.summary" class="block">
@@ -77,12 +77,11 @@ if (!props.currentData) {
 
 .page-content {
     padding: var(--space-2xs);
-    padding-top: var(--space-l);
-    padding-bottom: var(--space-xl);
+    padding-top: var(--space-m);
+    padding-bottom: var(--space-m);
 }
 .base-content {
     display: block;
-    padding-bottom: var(--space-l);
     @media(--m) {
         display: flex;
     }
@@ -108,15 +107,13 @@ if (!props.currentData) {
 
     @media(--m) {
         display: grid;
-        grid-template-columns: 1fr 5fr;
-        background-color: var(--color-white);
-        padding: var(--space-s);
+        grid-template-columns: 60px auto;
+        padding: var(--space-xs);
     }
+}
 
-    @media(--l) {
-        display: grid;
-        grid-template-columns: 1fr 8fr;
-    }
+.project-spec {
+	line-height: 135%;
 }
 
 </style>

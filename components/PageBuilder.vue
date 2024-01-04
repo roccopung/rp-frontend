@@ -4,8 +4,6 @@ const props = defineProps({
     sections: { type: Array, required: false },
 });
 
-console.log(props.sections);
-
 // Sections
 const chooseSection = (section) => {
   if (section._type === 'gallery') return resolveComponent('Gallery')

@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     assets: '/<rootDir>/assets',
     public: '/<rootDir>/public',
   },
+  devtools: { enabled: false },
   app: {
     head: {
       meta: [

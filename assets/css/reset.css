@@ -32,6 +32,7 @@ p {
 
 button,
 select,
+a,
 input[type='submit'],
 input[type='file'] {
   cursor: pointer;

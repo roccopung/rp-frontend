@@ -18,6 +18,18 @@ body {
   width: 100%;
 }
 
+body::-webkit-scrollbar {
+  width: 5px;
+  background: var(--color-grey);
+}
+
+
+body::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background: var(--color-acid-green);
+}
+
 img,
 svg {
   display: block;

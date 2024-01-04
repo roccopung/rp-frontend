@@ -1,15 +1,12 @@
 <script setup>
-const { vw, vh, dvh, viewportStyle } = useViewport()
-const mq = useMq()
+// const { vw, vh, dvh, viewportStyle } = useViewport()
+// const mq = useMq()
 
 </script>
 
 <template>
-	<div 
-	:style="viewportStyle" 
-	class="typo--m">
+	<div class="typo--m">
+		<Navigation />
 		<slot></slot>
 	</div>
 </template>
-
-<style></style>

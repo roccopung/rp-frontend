@@ -3,14 +3,11 @@
 		font-family:  "Venus Acier", "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
 		font-size: 12px;
-		line-height: 135%;
 		@media (--m) {
 			font-size: 12px;
-			line-height: 135%;
 		}
 		@media (--xl) {
 			font-size: 0.8svw;
-			line-height: 135%;
 		}
 	}
 	&--s {

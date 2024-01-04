@@ -2,8 +2,6 @@
 import { fetchProjectData } from '~/composables/project';
 
 const { params } = useRoute();
-const router = useRouter();
-
 const projectSlug = params.slug;
 const { currentData } = await fetchProjectData(projectSlug);
 
@@ -25,7 +23,7 @@ const windowWidth = width;
 		<Header :currentData="currentData" />
 		<main>
 			<Swiper v-if="swiperData || videoData" :swiperData="swiperData || []" :videoData="videoData" />
-			<NuxtLink v-if="data.url" class="visit-website typo--s" :to="data.url" target="_blank"> Visit Website
+			<NuxtLink v-if="data.url" class="visit-website typo--m" :to="data.url" target="_blank"> Visit Website
 			</NuxtLink>
 			<Content :currentData="currentData" />
 		</main>

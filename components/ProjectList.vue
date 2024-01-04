@@ -40,7 +40,7 @@ const { projectData } = await fetchProjectType();
   }
 
   @media(--l) {
-    grid-template-columns: repeat(auto-fill, 24svw);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
@@ -79,11 +79,13 @@ const { projectData } = await fetchProjectType();
 }
 
 .category {
-  padding: 0.1rem 0.2rem;
-  background-color: var(--color-acid-green);
-  width: fit-content;
-  border-top: 0;
+	padding: 0.1rem 0.2rem;
+	background-color: var(--color-acid-green);
+	width: fit-content;
+	border-top: 0;
+  line-height: 1;
 }
+
 
 .project-year {
   padding-right: 0.5rem;
@@ -92,5 +94,7 @@ const { projectData } = await fetchProjectType();
 
 .text-top {
   vertical-align: top;
+  line-height: 135%;
+
 }
 </style>

@@ -19,12 +19,12 @@ watchEffect(() => {
 </script>
 <template>
     <div class="toggleView">
-        <div class="toggleValue">{{ isList ? "List View" : "Network View" }}</div>
         <button  class="toggle" @click="toggleList()">
             <input type="checkbox" class="check">
             <b class="b switch"></b>
             <b class="b track"></b>
         </button>
+        <div class="toggleValue">{{ isList ? "List View" : "Network View" }}</div>
     </div>
 </template>
 <style scoped>
@@ -34,13 +34,9 @@ watchEffect(() => {
     text-align: right;
 }
 .toggleView {
-    position: fixed;
-    top: 10px;
-    right: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
-    z-index: 10;
 }
 
 .b {

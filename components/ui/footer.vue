@@ -1,11 +1,10 @@
 <script setup>
 
-const { params } = useRoute();
 const router = useRouter();
 
 const props = defineProps({
-	nextData: { type: Object, required: true },
-	prevData: { type: Object, required: true },
+	nextData: { type: Object, required: false },
+	prevData: { type: Object, required: false },
 });
 
 
@@ -24,41 +23,45 @@ const goToPrevPage = () => {
 </script>
 
 <template>
-	<footer class="footer typo--s">
-		<div v-if="props.nextData || props.prevData" class="swipe-projects typo--s">
-			<button v-show="props.nextData" class="button-next" type="submit" @click="goToNextPage">{{ props.nextData?.title
-			}}</button>
-			<button v-show="props.prevData" class="button-prev" type="submit" @click="goToPrevPage">{{ props.prevData?.title
-			}}</button>
-		</div>
-		<div class="navigation">
-			<NuxtLink to="/">Go to main page</NuxtLink>
-			<NuxtLink to="#">About</NuxtLink>
-		</div>
-	</footer>
+	<div>
+		<footer class="footer typo--s">
+			<div v-if="router.currentRoute.value.name !== 'index'" class="swipe-projects typo--s">
+				<button :class="{ invisible: !props.nextData }" class="button-next" type="submit" @click="goToNextPage" v-html="' ← ' + props.nextData?.title" />
+				<button :class="{ invisible: !props.prevData }" class="button-prev" type="submit" @click="goToPrevPage" v-html="props.prevData?.title + ' → ' " />
+			</div>
+		</footer>
+	</div>
 </template>
 
 <style scoped>
 .swipe-projects {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 1fr;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	border-top: 1px solid var(--color-black);
+	background-color: var(--color-white);
 }
 
 .button-next {
-	width: 50svw;
-	padding: var(--space-xs);
+	width: 1fr;
+	padding: var(--space-xs) var(--space-s);
 	text-align: left;
-	background-color: var(--color-primary-accent);
-
+	border-right: 1px solid var(--color-black);
 	&:hover {
 		background-color: var(--color-acid-green);
 	}
 }
 
+.invisible {
+	visibility: hidden;
+}
+
 .button-prev {
-	width: 50svw;
-	padding: var(--space-xs);
+	width: 1fr;
+	padding: var(--space-xs) var(--space-s);
 	text-align: right;
-	background-color: var(--color-primary-accent);
 
 	&:hover {
 		background-color: var(--color-acid-green);
@@ -66,19 +69,21 @@ const goToPrevPage = () => {
 }
 
 .footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	z-index: 100;
+	margin-bottom: 34px;
+	@media(--m){
+		margin-bottom: 0;
+	}
 }
 
 .navigation {
 	background-color: var(--color-white);
 	display: flex;
-	gap: 40px;
+	gap: var(--space-s);
 }
 
 .navigation>* {
-	padding: var(--space-xs);
+	&:hover {
+		background-color: var(--color-grey);
+	}
 }
 </style>

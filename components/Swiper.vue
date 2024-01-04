@@ -63,18 +63,18 @@ onUnmounted(() => {
 .swiper {
     width: 100%;
     height: 100%;
+    background-color: var(--color-black);
 }
 
 .swiper-wrapper {
     height: 100%;
     min-height: 50vh;
-    background-color: var(--color-black);
     display: flex;
     align-items: center;
     justify-items: center;
 
     @media (--m) {
-        height: calc(100vh - 84px);
+        height: calc(100svh - 51px);
     }
 }
 

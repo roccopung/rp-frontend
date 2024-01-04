@@ -4,7 +4,7 @@ const { width } = useWindowSize();
 const windowWidth = width;
 
 const props = defineProps({
-    currentData: { type: Object, required: true },
+	currentData: { type: Object, required: true },
 });
 
 
@@ -28,36 +28,38 @@ if (!props.currentData) {
 </script>
 
 <template>
-    <header class="header">
-			<div class="project-title">
-				<span class="project-spec text-top typo--xs" v-html="props.currentData.year" />
+	<header class="header">
+		<div class="project-title">
+			<span class="project-spec text-top typo--xs" v-html="props.currentData.year" />
+			<div>
 				<span v-html="props.currentData.title" />
 				<span class="category typo--xs" v-for="category in props.currentData.category" :key="category._id"
 					v-html="category.title" />
 			</div>
-			<div v-show="windowWidth > 700" class="project-details">
-				<div v-if="props.currentData.client" class="project-label">
-					<span class="project-spec text-top  typo--xs">Client</span>
-					<span v-html="props.currentData.client" />
-				</div>
-				<div class="project-label"><span class="text-top project-spec typo--xs">👀</span>
-					<div v-html="formatRoles(props.currentData.roles)" />
-				</div>
-				<div v-if="props.currentData.collaborators" class="text-top project-label">
-					<span class="project-spec typo--xs">Made with</span>
-					<span v-html="props.currentData.collaborators" />
-				</div>
+		</div>
+		<div v-show="windowWidth > 700" class="project-details">
+			<div v-if="props.currentData.client" class="project-label">
+				<span class="project-spec text-top typo--xs">Client</span>
+				<span v-html="props.currentData.client" />
 			</div>
-		</header>
+			<div class="project-label"><span class="text-top project-spec typo--xs">👀</span>
+				<div v-html="formatRoles(props.currentData.roles)" />
+			</div>
+			<div v-if="props.currentData.collaborators" class="text-top project-label">
+				<span class="project-spec typo--xs">Made with</span>
+				<span v-html="props.currentData.collaborators" />
+			</div>
+		</div>
+	</header>
 </template>
 
 <style scoped>
-
 .header {
 	position: sticky;
 	top: 0;
+	z-index: 2;
 	width: 100%;
-	z-index: 100;
+	pointer-events: none;
 }
 
 .category {
@@ -66,33 +68,44 @@ if (!props.currentData) {
 	background-color: var(--color-acid-green);
 	width: fit-content;
 	border-top: 0;
+	vertical-align: top;
 }
 
 .project-spec {
-	padding-right: 0.5rem;
+	padding-right: var(--space-s);
 }
 
 .text-top {
 	vertical-align: top;
+	line-height: 135%;
 }
 
 .project-title {
 	padding: var(--space-2xs);
-	background-color: var(--color-white);
+	padding-left: var(--space-xs);
+	background-color: var(--color-primary-accent);
+	display: grid;
+	grid-template-columns: 40px 1fr;
+	border-bottom: 1px solid var(--color-black);
+	/* @media(--m){
+		background-color: transparent;
+	} */
 }
 
 .project-details {
-	background-color: var(--color-grey);
+	background-color: var(--color-white);
 	padding: var(--space-2xs);
+	padding-left: var(--space-xs);
 	display: flex;
 	gap: 40px;
+	border-bottom: 1px solid var(--color-black);
 }
 
 .project-label {
 	display: block;
-
 	@media(--m) {
-		display: flex;
+		display: grid;
+		grid-template-columns: 40px 1fr;
 	}
 }
 </style>
