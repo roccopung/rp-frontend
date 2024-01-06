@@ -17,17 +17,35 @@ const props = defineProps({
     display: flex;
     justify-content: center;
 }
+
 .image-container {
-    padding: var(--space-xxs);
-    margin-bottom: var(--space-xs);
+    max-width: 100%;
     @media(--m){
-        padding: var(--space-m);
-        margin-bottom: var(--space-m);
+        max-width: 520px;
+    }
+    @media(--xl){
+        max-width: 50%;
     }
 }
 
 .image {
-    max-height: 500px;
-    max-width: 700px;
+    padding-bottom: var(--space-xs);
+}
+
+img {
+    width: 100%;
+}
+
+
+/* .image {
+    max-width: 100%;
+    padding-bottom: var(--space-xs);
+    @media(--l) {
+        max-height: 500px;
+    }
+} */
+
+figcaption {
+    opacity: 0.4;
 }
 </style>

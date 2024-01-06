@@ -24,7 +24,7 @@ watchEffect(() => {
             <b class="b switch"></b>
             <b class="b track"></b>
         </button>
-        <div class="toggleValue">{{ isList ? "List View" : "Network View" }}</div>
+        <div class="toggleValue">{{ isList ? "Grid View" : "Network View" }}</div>
     </div>
 </template>
 <style scoped>

@@ -1,9 +1,6 @@
 <script setup>
 const isAbout = useAbout();
 const toggleAbout = useToggle(isAbout);
-watchEffect(() => {
-  console.log(isAbout.value);
-})
 
 </script>
 <template>

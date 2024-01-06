@@ -12,7 +12,7 @@ const prevEl = ref();
 
 const props = defineProps({
     swiperData: { type: Array, required: false },
-    videoData: { type: Object, required: false }
+    videoData: { type: Object, required: false },
 });
 
 const videoSource = props.videoData?.url;
@@ -26,11 +26,14 @@ onMounted(() => {
             navigation: {
                 nextEl: nextEl.value,
                 prevEl: prevEl.value,
+            },
+            keyboard: {
+                enabled: true,
+                onlyInViewport: false
             }
         });
     }
-    
-    
+
 });
 
 onUnmounted(() => {
@@ -46,7 +49,7 @@ onUnmounted(() => {
                     <Plyr :videoSource="videoSource" />
                 </div>
                 <div class="swiper-slide" v-for="(image, i) in props.swiperData" :key="i">
-                    <NuxtImg format="webp" :src="$urlFor(image.itemUrl).url()" alt="Project Image" preload />
+                    <NuxtImg format="webp" :src="$urlFor(image.itemUrl).auto('format').url()" alt="Project Image" preload />
                 </div>
             </div>
             <div v-else class="swiper-slide"></div>
@@ -67,14 +70,14 @@ onUnmounted(() => {
 }
 
 .swiper-wrapper {
-    height: 100%;
-    min-height: 50vh;
+    height: 80svh;
     display: flex;
     align-items: center;
     justify-items: center;
 
     @media (--m) {
         height: calc(100svh - 51px);
+        min-height: none;
     }
 }
 
@@ -90,7 +93,12 @@ onUnmounted(() => {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+
+    @media(--m) {
+        max-width: 95svw;
+        padding: var(--space-l);
+    }
 }
 
 .swiper-btn-next,
@@ -105,9 +113,24 @@ onUnmounted(() => {
 .swiper-btn-next {
     right: var(--space-s);
     transform: rotate(180deg);
+    width: 14px;
+
+    @media(--m) {
+        width: auto;
+    }
 }
 
 .swiper-btn-prev {
     left: var(--space-s);
+    width: 14px;
+
+    @media(--m) {
+        width: auto;
+    }
+}
+
+.swiper-btn-next.swiper-button-disabled,
+.swiper-btn-prev.swiper-button-disabled {
+    opacity: 0;
 }
 </style>

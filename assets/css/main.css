@@ -52,6 +52,7 @@ svg {
 
 p {
   padding-top:0;
+  padding-bottom: var(--space-s);
 }
 
 p > a {

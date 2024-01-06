@@ -1,10 +1,11 @@
 .typo {
 	&--xs {
-		font-family:  "Venus Acier", "Venus Plomb", "Arial", sans-serif;
+		font-family:  "Atlas Grotesk", "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
-		font-size: 12px;
+		font-size: 11px;
+		letter-spacing: -0.01rem;
 		@media (--m) {
-			font-size: 12px;
+			font-size: 11px;
 		}
 		@media (--xl) {
 			font-size: 0.8svw;
@@ -35,7 +36,7 @@
 		}
 	}
 	&--m-alt {
-		font-family: "Venus Acier", "Venus Plomb", "Arial", sans-serif;
+		font-family: "Atlas Grotesk", "Venus Plomb", "Arial", sans-serif;
 		font-weight: 300;
 		font-size: 16px;
 		line-height: 135%;

@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "Compagnon";
+  font-family: "Atlas Grotesk";
   src: 
-  url("/fonts/Compagnon-Bold.woff2") format("woff2");
+  url("/fonts/Atlas-Grotesk-Web-Light.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -16,9 +16,17 @@
 }
 
 @font-face {
-  font-family: "Venus Acier";
-  src: url("/fonts/Venus+Acier.woff") format("woff");
+  font-family: "Century Schoolbook BT";
+  src: url("/fonts/CenturySchoolbookBT-Roman.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: "Century Schoolbook BT";
+  src: url("/fonts/CenturySchoolbookBT-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
   font-stretch: normal;
 }

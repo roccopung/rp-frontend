@@ -26,8 +26,8 @@ const goToPrevPage = () => {
 	<div>
 		<footer class="footer typo--s">
 			<div v-if="router.currentRoute.value.name !== 'index'" class="swipe-projects typo--s">
-				<button :class="{ invisible: !props.nextData }" class="button-next" type="submit" @click="goToNextPage" v-html="' ← ' + props.nextData?.title" />
-				<button :class="{ invisible: !props.prevData }" class="button-prev" type="submit" @click="goToPrevPage" v-html="props.prevData?.title + ' → ' " />
+				<button :class="{ invisible: !props.prevData }" class="button-prev" type="submit" @click="goToPrevPage" v-html="props.prevData?.title + ' ← ' " />
+				<button :class="{ invisible: !props.nextData }" class="button-next" type="submit" @click="goToNextPage" v-html="' → ' + props.nextData?.title" />
 			</div>
 		</footer>
 	</div>
@@ -47,8 +47,8 @@ const goToPrevPage = () => {
 .button-next {
 	width: 1fr;
 	padding: var(--space-xs) var(--space-s);
-	text-align: left;
-	border-right: 1px solid var(--color-black);
+	text-align: right;
+	outline: 1px solid var(--color-black);
 	&:hover {
 		background-color: var(--color-acid-green);
 	}
@@ -61,7 +61,8 @@ const goToPrevPage = () => {
 .button-prev {
 	width: 1fr;
 	padding: var(--space-xs) var(--space-s);
-	text-align: right;
+	text-align: left;
+	outline: 1px solid var(--color-black);
 
 	&:hover {
 		background-color: var(--color-acid-green);

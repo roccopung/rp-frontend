@@ -8,14 +8,14 @@
         <div class="right">Visual Developer <br>& Whatsoever</div>
         <div class="about">I’m a curious person with a background in art and design, currently based in Paris, making websites and digital things. If you type my name online you can also find me in amateur movies.</div>
         <div class="contacts">
-            <NuxtLink class="link" to="https://drive.google.com/file/d/199Q1UIfPbERoERsEZ6VYqPElGXeNOjaw/view?usp=sharing">CV</NuxtLink>
-            <NuxtLink class="link" to="https://www.instagram.com/rocco.punghellini/">@Instagram</NuxtLink>
-            <NuxtLink class="link" to="mailto:rocco.punghellini@gmail.com">e-mail</NuxtLink>
+            <NuxtLink class="link cv" to="https://drive.google.com/file/d/199Q1UIfPbERoERsEZ6VYqPElGXeNOjaw/view?usp=sharing">CV</NuxtLink>
+            <NuxtLink class="link insta" to="https://www.instagram.com/rocco.punghellini/">@Instagram</NuxtLink>
+            <NuxtLink class="link email" to="mailto:rocco.punghellini@gmail.com">e-mail</NuxtLink>
         </div>
         <div class="radar">
-            <div>📡 :</div>
+            <div>📡 : </div>
             <BlinkingCircle />
-            <div class="status typo--s">Active</div>
+            <div class="status typo--s">Open to projects</div>
         </div>
     </div>
 </template>
@@ -41,6 +41,9 @@
         width: 25svw;
         top: 26.5px;
         right: 0;
+    }
+    @media(--xl) {
+        top: 28.5px;
     }
 }
 
@@ -102,7 +105,7 @@
     align-items: center;
     gap: var(--space-s);
     height: min-content;
-    grid-column-start: 3;
+    grid-column-start: 2;
     grid-column-end: 4;
     justify-self: flex-end;
     align-self: baseline;
@@ -114,4 +117,5 @@
     width: fit-content;
     border-top: 0;
 }
+
 </style>

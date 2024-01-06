@@ -26,7 +26,7 @@ onUnmounted(() => {
   
 <template>
     <div ref="swiperEl" class="swiper">
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" :class="{ stacked : props.section.display == 'stacked', inline : props.section.display == 'inline', carousel : props.section.display == 'carousel' }">
             <div class="swiper-slide" v-for="(image, i) in props.section.images" :key="i">
                 <NuxtImg class="image" format="webp" :src="$urlFor(image.asset).url()" :alt="image.alt" preload />
             </div>
@@ -40,26 +40,38 @@ onUnmounted(() => {
     background-color: var(--color-white);
 }
 
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
+.swiper-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+
+.stacked {
+    flex-wrap: wrap;
+}
+
+.inline {
+    flex-wrap: nowrap;
+}
+
+.swiper-slide, .swiper-slide-active {
+    width: fit-content;
+    padding: var(--space-2xs) 0 var(--space-2xs) 0;
+    display: flex;
+    justify-content: center;
+    margin: 0!important;
 }
 
 .swiper-slide img {
     display: block;
-    width: 70svw;
-    object-fit: cover;
-
-    @media(--m) {
-        width: fit-content;
-        height: 400px;
+    width: fit-content;
+    padding: 0 var(--space-2xs);
+    max-height: 80svh;
+    @media(--m){
+        max-width: 100%;
+        height: 70svh;
+        max-height: 400px;
     }
 }
 
-.swiper-slide {
-    width: fit-content;
-}
+
 </style>

@@ -10,7 +10,7 @@ const isAbout = useAbout();
 
 </script>
 <template>
-    <div>
+    <nav>
         <div class="navigation-container"
             :class="{ border: router.currentRoute.value.name == 'index', backgroundIndex: router.currentRoute.value.name == 'index' }">
             <div class="navigation-wrapper" :class="{ flexBetween: router.currentRoute.value.name == 'index', flexEnd: router.currentRoute.value.name !== 'index' }">
@@ -25,7 +25,7 @@ const isAbout = useAbout();
             </div>
             <About v-if="isAbout" />
         </div>
-    </div>
+    </nav>
 </template>
 <style scoped>
 .navigation-container {

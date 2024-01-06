@@ -15,7 +15,7 @@ const chooseSection = (section) => {
 </script>
 <template>
     <div>
-      <component
+      <component class="builder-block"
         v-for="section in props.sections"
         :key="section._key"
         :is="chooseSection(section)"
@@ -23,4 +23,9 @@ const chooseSection = (section) => {
       />
     </div>
   </template>
-<style scoped></style>
+<style scoped>
+.builder-block {
+  padding: var(--space-s) 0 var(--space-m) 0;
+  background: transparent;
+}
+</style>

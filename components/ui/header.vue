@@ -32,7 +32,7 @@ if (!props.currentData) {
 		<div class="project-title">
 			<span class="project-spec text-top typo--xs" v-html="props.currentData.year" />
 			<div>
-				<span v-html="props.currentData.title" />
+				<h1 v-html="props.currentData.title" />
 				<span class="category typo--xs" v-for="category in props.currentData.category" :key="category._id"
 					v-html="category.title" />
 			</div>
@@ -42,11 +42,11 @@ if (!props.currentData) {
 				<span class="project-spec text-top typo--xs">Client</span>
 				<span v-html="props.currentData.client" />
 			</div>
-			<div class="project-label"><span class="text-top project-spec typo--xs">👀</span>
-				<div v-html="formatRoles(props.currentData.roles)" />
+			<div class="project-label"><span class="text-top project-spec typo--xs">Work</span>
+				<div class="roles" v-html="formatRoles(props.currentData.roles)" />
 			</div>
-			<div v-if="props.currentData.collaborators" class="text-top project-label">
-				<span class="project-spec typo--xs">Made with</span>
+			<div v-if="props.currentData.collaborators" class="project-label">
+				<span class="project-spec text-top typo--xs">With</span>
 				<span v-html="props.currentData.collaborators" />
 			</div>
 		</div>
@@ -71,13 +71,15 @@ if (!props.currentData) {
 	vertical-align: top;
 }
 
+
 .project-spec {
 	padding-right: var(--space-s);
+	
 }
 
 .text-top {
 	vertical-align: top;
-	line-height: 135%;
+	line-height: 160%;
 }
 
 .project-title {
@@ -87,9 +89,9 @@ if (!props.currentData) {
 	display: grid;
 	grid-template-columns: 40px 1fr;
 	border-bottom: 1px solid var(--color-black);
-	/* @media(--m){
-		background-color: transparent;
-	} */
+	@media(--xl){
+		grid-template-columns: 3svw 1fr;
+	}
 }
 
 .project-details {
@@ -97,8 +99,11 @@ if (!props.currentData) {
 	padding: var(--space-2xs);
 	padding-left: var(--space-xs);
 	display: flex;
-	gap: 40px;
+	gap: var(--space-l);
 	border-bottom: 1px solid var(--color-black);
+	@media(--xl){
+		gap: 3svw;
+	}
 }
 
 .project-label {
@@ -106,6 +111,9 @@ if (!props.currentData) {
 	@media(--m) {
 		display: grid;
 		grid-template-columns: 40px 1fr;
+	}
+	@media(--xl){
+		grid-template-columns: 3svw 1fr;
 	}
 }
 </style>

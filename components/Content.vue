@@ -34,7 +34,9 @@ if (!props.currentData) {
             <div class="block-container">
                 <div v-if="props.currentData.summary" class="block">
                     <div class="text-top project-spec typo--xs">Summary</div>
-                    <div v-html="props.currentData.summary" />
+                    <div>
+                        <PortableText :value="props.currentData.summary"/>
+                    </div>
                 </div>
                 <div v-if="props.currentData.tech" class="block">
                     <div class="text-top project-spec typo--xs">Stack</div>
@@ -63,7 +65,7 @@ if (!props.currentData) {
             </div>
             <div class="block-container">
                 <div class="block">
-                    <div class="text-top project-spec typo--xs">Process</div>
+                    <div class="text-top project-spec typo--xs">Description</div>
                     <div>
                         <PortableText :value="props.currentData.description"/>
                     </div>
@@ -82,6 +84,8 @@ if (!props.currentData) {
 }
 .base-content {
     display: block;
+    padding-bottom: var(--space-l);
+
     @media(--m) {
         display: flex;
     }
@@ -89,7 +93,6 @@ if (!props.currentData) {
 
 .block-container {
     width: 100%;
-
     @media(--m) {
         width: 50%;
     }
@@ -104,16 +107,25 @@ if (!props.currentData) {
 .block {
     display: block;
     padding: var(--space-s);
+    
 
     @media(--m) {
         display: grid;
-        grid-template-columns: 60px auto;
+        grid-template-columns: 70px auto;
         padding: var(--space-xs);
+    }
+
+    @media(--xl){
+        grid-template-columns: 5.5svw auto;
     }
 }
 
 .project-spec {
-	line-height: 135%;
+	line-height: 160%;
+    padding-right: 20px;
+    @media(--xl){
+        padding-right: 1svw;
+    }
 }
 
 </style>
