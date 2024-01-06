@@ -1,11 +1,12 @@
 <script setup>
 
+
 const { width } = useWindowSize();
 const windowWidth = width;
 
 const router = useRouter();
 
-const isAbout = useAbout(); 
+const isAbout = useAbout();
 
 
 </script>
@@ -13,13 +14,14 @@ const isAbout = useAbout();
     <nav>
         <div class="navigation-container"
             :class="{ border: router.currentRoute.value.name == 'index', backgroundIndex: router.currentRoute.value.name == 'index' }">
-            <div class="navigation-wrapper" :class="{ flexBetween: router.currentRoute.value.name == 'index', flexEnd: router.currentRoute.value.name !== 'index' }">
+            <div class="navigation-wrapper"
+                :class="{ flexBetween: router.currentRoute.value.name == 'index', flexEnd: router.currentRoute.value.name !== 'index' }">
                 <ToggleView v-if="windowWidth >= 700 && router.currentRoute.value.name == 'index'" />
                 <div class="buttons-container">
                     <NuxtLink v-if="router.currentRoute.value.name !== 'index'" class="button" to="/">Index
                     </NuxtLink>
                     <div class="button">
-                        <ToggleAbout :isAbout="isAbout"/>
+                        <ToggleAbout :isAbout="isAbout" />
                     </div>
                 </div>
             </div>
@@ -36,6 +38,7 @@ const isAbout = useAbout();
     height: fit-content;
     border-top: 1px solid var(--color-black);
     background-color: var(--color-primary-accent);
+
     @media(--m) {
         top: 0;
         width: 100svw;
@@ -70,7 +73,8 @@ const isAbout = useAbout();
 
 .border {
     border-bottom: none;
-    @media(--m){
+
+    @media(--m) {
         border-bottom: 1px solid var(--color-black);
     }
 }
@@ -90,6 +94,7 @@ const isAbout = useAbout();
     background-color: var(--color-white);
     padding: var(--space-xs) var(--space-s);
     outline: 1px solid var(--color-black);
+
     &:hover {
         background-color: var(--color-grey);
     }

@@ -34,6 +34,9 @@ const { projectData } = await fetchProjectType();
   grid-gap: 0px;
   grid-row-gap: var(--space-m);
   grid-column-gap: var(--space-xs);
+  padding-top: var(--space-m);
+  padding-bottom: var(--space-xl);
+
 
   @media(--m) {
     grid-template-columns: 1fr 1fr;

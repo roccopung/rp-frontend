@@ -28,9 +28,6 @@ useHead({
 	background-color: var(--color-primary-light);
 	padding: var(--space-xs);
 	padding-top:var(--space-m);
-	@media(--m){
-		padding-top:var(--space-l);
-	}
 }
 
 </style>

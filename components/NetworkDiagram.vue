@@ -11,6 +11,12 @@ const tagsQuery = groq`
     title
   }`;
 
+const categoriesQuery = groq`
+  *[_type == "categories"] {
+    _id,
+    title
+  }`;
+
 const projectQuery = groq`
   *[_type == "projectType"] {
     _id,
@@ -20,31 +26,55 @@ const projectQuery = groq`
       _id,
       title
     },
+    category[] -> {
+      _id,
+      title
+    },
   }`;
 
-const { data: categories } = await useSanityQuery(tagsQuery);
+const { data: tags } = await useSanityQuery(tagsQuery);
+const { data: categories } = await useSanityQuery(categoriesQuery);
 const { data: projects } = await useSanityQuery(projectQuery);
 
+const tagsAndCategories = ref([]);
 
 
 onMounted(() => {
 
-  const rolesNodes = categories.value?.map((roles) => ({
-    id: roles._id,
-    label: roles.title,
+  const tagsArray = tags.value?.map((tag) => ({
+    id: tag._id,
+    label: tag.title,
+    background: 'rgb(16, 16, 16)',
+    hoverColor: 'rgb(16, 16, 16)',
+    color: '#fff'
+  })) || [];
+  
+  const categoriesArray = categories.value?.map((category) => ({
+    id: category._id,
+    label: category.title,
+    background: '#32FF2E',
+    hoverColor: '#32FF2E',
+    color: '#000'
+  })) || [];
+
+  tagsAndCategories.value = tagsArray.concat(categoriesArray);
+
+  const rolesNodes = tagsAndCategories.value?.map((roles) => ({
+    id: roles.id,
+    label: roles.label,
     color: {
-      background: '#000',
+      background: roles.background,
       border: '#000',
       hover: {
         border: '#000',
-        background: "#000"
+        background: roles.hoverColor,
       },
       highlight: {
         border: '#000',
-        background: "#000"
+        background: '#000'
       },
     },
-    font: { color: "white" },
+    font: { color: roles.color },
     value: 30
   })) || [];
 
@@ -57,33 +87,33 @@ onMounted(() => {
       border: '#000',
       hover: {
         border: '#000',
-        background: "#FFE5A4",
+        background: '#FFE5A4',
       },
       highlight: {
         border: '#000',
-        background: "#FFE5A4"
+        background: '#FFE5A4'
       },
     },
     value: 10
   })) || [];
 
-
   const nodes = rolesNodes.concat(projectNodes);
 
+
   const nodesDataSet = new DataSet(nodes);
+  console.log(nodesDataSet);
 
   const edges = [];
 
   projects.value?.forEach((project) => {
-    project.roles?.forEach((roles) => {
-      const matchingRolesNode = nodesDataSet.get(roles._id);
+    [...project.roles, ...project.category].forEach((relatedItem) => {
+      const matchingRolesNode = nodesDataSet.get(relatedItem._id);
 
       if (matchingRolesNode) {
         edges.push({ from: matchingRolesNode.id, to: project._id });
       }
     });
   });
-
 
   const container = networkDiagram.value;
 
@@ -113,7 +143,7 @@ onMounted(() => {
           return value / total;
         },
         min: 5,
-        max: 150,
+        max: 100,
       }
     },
     edges: {
@@ -139,7 +169,8 @@ onMounted(() => {
       },
       stabilization: false,
       wind: { x: 0, y: 0 },
-    }
+    },
+    layout: { randomSeed: 2 }
   };
 
 
@@ -184,5 +215,6 @@ watchEffect(() => {
   background-color: var(--color-primary-light);
   overflow: hidden;
   position: absolute;
+  z-index: 4;
 }
 </style>
