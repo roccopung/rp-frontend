@@ -180,7 +180,7 @@ onMounted(() => {
     if (params.nodes.length === 1) {
       let node = nodesDataSet.get(params.nodes[0]);
       if (node && node.url) {
-        window.open(`http://localhost:3000/project/${node.url}`, '_blank');
+        window.open(`https://rocco-punghellini-portfolio.vercel.app/project/${node.url}`, '_blank');
       }
     }
   });
