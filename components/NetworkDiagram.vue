@@ -71,7 +71,7 @@ onMounted(() => {
       },
       highlight: {
         border: '#000',
-        background: '#000'
+        background: roles.hoverColor,
       },
     },
     font: { color: roles.color },
