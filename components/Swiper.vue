@@ -96,8 +96,8 @@ onUnmounted(() => {
     object-fit: contain;
 
     @media(--m) {
-        max-width: 95svw;
-        padding: var(--space-l);
+        padding-left: var(--space-l);
+        padding-right: var(--space-l);
     }
 }
 

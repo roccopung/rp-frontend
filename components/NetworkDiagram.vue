@@ -48,7 +48,7 @@ onMounted(() => {
     hoverColor: 'rgb(16, 16, 16)',
     color: '#fff'
   })) || [];
-  
+
   const categoriesArray = categories.value?.map((category) => ({
     id: category._id,
     label: category.title,
@@ -87,11 +87,11 @@ onMounted(() => {
       border: '#000',
       hover: {
         border: '#000',
-        background: '#FFE5A4',
+        background: 'rgb(225, 225, 225)',
       },
       highlight: {
         border: '#000',
-        background: '#FFE5A4'
+        background: 'rgb(225, 225, 225)'
       },
     },
     value: 10
@@ -121,7 +121,6 @@ onMounted(() => {
     nodes: new DataSet(nodes),
     edges: new DataSet(edges),
   };
-  console.log(data)
 
   const options = {
     nodes: {
@@ -154,6 +153,7 @@ onMounted(() => {
         angle: Path2D.PI / 4
       },
       smooth: false,
+      chosen: false
     },
     interaction: {
       hover: true,
@@ -162,21 +162,41 @@ onMounted(() => {
     },
     physics: {
       forceAtlas2Based: {
-        gravitationalConstant: -400,
+        theta: 0.5,
+        gravitationalConstant: -50,
         springConstant: 0.6,
         springLength: 80,
         damping: 0.35,
+        avoidOverlap: 0.5,
       },
       stabilization: false,
       wind: { x: 0, y: 0 },
     },
-    layout: { randomSeed: 2 }
+    layout: { randomSeed: 7 }
   };
 
 
   const network = new Network(container, data, options);
+  const networkCanvas = container.getElementsByTagName("canvas")[0];
+
   network.fit({ minZoomLevel: 1 });
-  network.on('selectNode', function (params) {
+
+  network.on("hoverNode", function (event) {
+    const nodeId = event.node;
+    const node = nodesDataSet.get(nodeId);
+
+    // Check if the hovered node is a projectNode
+    if (node && node.url) {
+      networkCanvas.style.cursor = "pointer";
+    }
+  });
+
+  // Reset cursor style when not hovering over projectNodes
+  network.on("blurNode", function () {
+    networkCanvas.style.cursor = "default";
+  });
+
+  network.on("selectNode", function (params) {
     if (params.nodes.length === 1) {
       let node = nodesDataSet.get(params.nodes[0]);
       if (node && node.url) {

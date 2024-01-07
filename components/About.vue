@@ -4,28 +4,13 @@ import { isClient } from '@vueuse/shared'
 
 const handle = ref();
 const innerWidth = isClient ? window.innerWidth : 0;
-console.log(innerWidth)
 const innerHeight = isClient ? window.innerHeight : 0;
-console.log(innerHeight)
 
 const initialX = innerWidth - 400;
 const initialY = innerHeight > 1440 ? 28.5 : 26.5;
 
 const { width } = useWindowSize();
 const windowWidth = width;
-
-// let initialPosition = ref({ x: 10, y: 10 });
-// let initialX = computed(() => initialPosition.value.x);
-// let initialY = computed(() => initialPosition.value.y);
-
-// onMounted(async () => {
-//     initialPosition.value.x = windowWidth.value - 400;
-//     initialPosition.value.y = windowHeight.value > 1440 ? 28.5 : 26.5;
-
-//     await nextTick(); 
-//     console.log(initialX.value);
-// });
-
 
 </script>
 <template>
@@ -38,14 +23,9 @@ const windowWidth = width;
             <div class="image"></div>
             <div class="right">Web Developer <br>& Visual Designer</div>
             <div class="about">
-                <p>I’m a curious person with a background in art and design, currently based in Paris.</p>
-                <p>I make websites and digital things (but if you type my name online you can also find me in amateur
-                    movies)</p>
-                <p>I'm always open to new projects and collaborations. Whether it's <u>crafting websites</u>, diving into
-                    <u>socially committed design works</u>, or <u>shaping visual identities</u>, I'm here for it all.</p>
-                <p>One thing I'm particularly passionate about is fostering collaboration. I don't just offer solo work: I
-                    am eager to extend and provide a network of collaborators tailored to each project's requirements. Let's
-                    make something together ✌️</p>
+                <p>I’m a curious person with a background in art and design, currently based in Paris. I make websites and digital things (but if you type my name online you can also find me in amateur movies).</p>
+                <p>I'm always open to new projects and collaborations. Whether it's <u>crafting websites</u>, diving into <u>socially committed design works</u>, <u>visual identities</u> or <u>giving shape to ideas</u>, I'm here for it all.</p>
+                <p>This portfolio includes solo commissions and academic works, but also the result of great team efforts. One thing I'm particularly passionate about is encouraging collaboration: each project requires different expertises, and I am eager to connect people tailored for the case. Always feel free to reach me out, and let's make something together ✌️</p>
             </div>
             <div class="contacts">
                 <NuxtLink class="link cv"
@@ -64,6 +44,7 @@ const windowWidth = width;
 <style scoped>
 .draggable {
     position: fixed;
+    cursor: grabbing;
 }
 
 .mobile {
@@ -86,9 +67,8 @@ const windowWidth = width;
     @media(--m) {
         border: 0;
         outline: 1px solid var(--color-black);
-        min-width: 400px;
+        width: 400px;
         height: fit-content;
-        width: 25svw;
         top: 26.5px;
         right: 0;
     }

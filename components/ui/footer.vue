@@ -24,12 +24,12 @@ const goToPrevPage = () => {
 
 <template>
 	<div>
-		<footer class="footer typo--s">
+		<div class="footer typo--s">
 			<div v-if="router.currentRoute.value.name !== 'index'" class="swipe-projects typo--s">
 				<button :class="{ invisible: !props.prevData }" class="button-prev" type="submit" @click="goToPrevPage" v-html="props.prevData?.title + ' ← ' " />
 				<button :class="{ invisible: !props.nextData }" class="button-next" type="submit" @click="goToNextPage" v-html="' → ' + props.nextData?.title" />
 			</div>
-		</footer>
+		</div>
 	</div>
 </template>
 
@@ -41,6 +41,7 @@ const goToPrevPage = () => {
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
 	border-top: 1px solid var(--color-black);
+	border-bottom: 1px solid var(--color-black);
 	background-color: var(--color-white);
 }
 

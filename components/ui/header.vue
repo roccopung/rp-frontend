@@ -42,7 +42,7 @@ if (!props.currentData) {
 				<span class="project-spec text-top typo--xs">Client</span>
 				<span v-html="props.currentData.client" />
 			</div>
-			<div class="project-label"><span class="text-top project-spec typo--xs">Work</span>
+			<div v-if="props.currentData.roles" class="project-label"><span class="text-top project-spec typo--xs">Work</span>
 				<div class="roles" v-html="formatRoles(props.currentData.roles)" />
 			</div>
 			<div v-if="props.currentData.collaborators" class="project-label">

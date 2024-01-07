@@ -56,7 +56,7 @@ if (!props.currentData) {
                         <div v-html="props.currentData.collaborators" />
                     </div>
                 </div>
-                <div v-show="windowWidth < 700" class="block">
+                <div v-if="props.currentData.roles" v-show="windowWidth < 700" class="block">
                     <div>
                         <div class="text-top project-spec typo--xs">👀</div>
                         <div v-html="formatRoles(props.currentData.roles)" />
@@ -64,7 +64,7 @@ if (!props.currentData) {
                 </div>
             </div>
             <div class="block-container">
-                <div class="block">
+                <div v-if="props.currentData.description" class="block">
                     <div class="text-top project-spec typo--xs">Description</div>
                     <div>
                         <PortableText :value="props.currentData.description"/>

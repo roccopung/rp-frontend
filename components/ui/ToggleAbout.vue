@@ -4,7 +4,7 @@ const toggleAbout = useToggle(isAbout);
 
 </script>
 <template>
-    <button @click="toggleAbout()">About</button>
+    <button @click="toggleAbout()">About me</button>
 </template>
 <style scoped>
 
